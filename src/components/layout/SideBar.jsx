@@ -1,0 +1,36 @@
+import { NavLink } from "react-router-dom";
+import { useState } from "react";
+
+export default function SideBar() {
+  
+  const getLinkClass = ({ isActive }) => {
+    return `px-6 py-3 transition-all duration-300 ${
+      isActive 
+        ? 'bg-primary-light text-white p-2 rounded-md' 
+        : 'bg-white'
+    }`;
+  };
+
+
+  return (
+    <div className=" h-screen bg-white">
+        <aside className="w-64 p-6">
+            <div className="mb-8">
+                <h2 className=" text-xl text-brand-400 font-semibold">Fina Inc</h2>
+            </div>
+
+            <nav className=" flex flex-col gap-4 text-base text-brand-300">
+                <NavLink className={getLinkClass} to="/"> Dashboard</NavLink>
+                <NavLink className={getLinkClass} to="/finance">Finance</NavLink>
+                <NavLink className={getLinkClass} to="/ecommerce">E-Commerce</NavLink>
+                <NavLink className={getLinkClass} to="/project">Project</NavLink>
+                <NavLink className={getLinkClass} to="/campaign">Campaign</NavLink>
+                <NavLink className={getLinkClass} to="/calendar">Calendar</NavLink>
+                <NavLink className={getLinkClass} to="/chat">Chat</NavLink>
+            </nav>
+        </aside>
+    </div>
+  );
+}
+
+/* className={`${isOpen ? 'bg-primary' : 'bg-white'}`} */
