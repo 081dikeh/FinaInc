@@ -19,7 +19,7 @@ function App() {
       <SideBar />
       <div className="flex-1 flex flex-col">
         <Header />
-        <main className="p-6">
+        <main className="p-6 ml-64">
             <Routes>
               <Route path='/' element={<DashBoardPage />} />
               <Route path='/finance' element={<Finance />} />
@@ -38,3 +38,4 @@ function App() {
 }
 
 export default App;
+

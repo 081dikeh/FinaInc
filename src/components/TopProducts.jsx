@@ -2,11 +2,8 @@ import { useState, useMemo } from "react";
 import { Link } from "react-router-dom";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
-
-
-export default function Orders({ data }) {
-    // Sorting state
-    const [sortField, setSortField] = useState(null);
+export default function TopProducts({ data }) {
+        const [sortField, setSortField] = useState(null);
     const [sortDirection, setSortDirection] = useState('asc');
     //pagination state
     const [currentPage, setCurrentPage] = useState(1);
@@ -70,7 +67,7 @@ export default function Orders({ data }) {
     return (
         <div className="bg-white rounded-lg shadow overflow-hidden">
             <div className="p-6 border-b border-gray-200 flex items-center justify-between">
-                <h3 className="text-lg font-semibold">Recent Orders</h3>
+                <h3 className="text-lg font-semibold">Top Products</h3>
                 <Link className="text-brand-600 hover:underline">View all</Link>
             </div>
 
@@ -86,9 +83,9 @@ export default function Orders({ data }) {
                             </th>
                             <th 
                                 className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase cursor-pointer hover:bg-gray-100"
-                                onClick={() => handleSort('customerName')}
+                                onClick={() => handleSort('numberOrdered')}
                             >
-                                CUSTOMER
+                                ORDERED
                             </th>
                             <th 
                                 className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase cursor-pointer hover:bg-gray-100"
@@ -98,35 +95,41 @@ export default function Orders({ data }) {
                             </th>
                             <th 
                                 className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase cursor-pointer hover:bg-gray-100"
-                                onClick={() => handleSort('status')}
+                                onClick={() => handleSort('rating')}
                             >
-                                STATUS
+                                RATING
+                            </th>
+                            <th 
+                                className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase cursor-pointer hover:bg-gray-100"
+                                onClick={() => handleSort('price')}
+                            >
+                                PRICE
                             </th>
                         </tr>
                     </thead>
                     <tbody className="divide-y divide-gray-200">
-                    {currentData.map((order) => (
-                        <tr key={order.orderId} className="border-b hover:bg-gray-50">
+                    {currentData.map((topproduct) => (
+                        <tr key={topproduct.productId} className="border-b hover:bg-gray-50">
                             <td className="px-6 py-4 whitespace-nowrap">
                                 <div className=" flex items-center gap-3">
-                                    <img src={order.productImage} className="w-10 h-10 rounded object-cover" alt="" />
+                                    <img src={topproduct.image} className="w-10 h-10 rounded object-cover" alt="" />
                                     <div>
-                                        <p className="text-sm font-medium text-gray-900">{order.productName}</p>
-                                        <p className="text-xs text-gray-500">{order.quantityOrdered} products</p>
+                                        <p className="text-sm font-medium text-gray-900">{topproduct.productName}</p>
+                                        <p className="text-xs text-gray-500">{topproduct.SKUNumber} products</p>
                                     </div>
                                 </div>
                             </td>
                             <td className="px-6 py-4 whitespace-nowrap">
-                                <div>
-                                    <p className="text-sm font-medium text-gray-900">{order.customerName}</p>
-                                    <p className="text-xs text-gray-500">{order.customerEmail}</p>
-                                </div>
+                                    <p className="text-sm font-medium text-gray-900">{topproduct.numberOrdered}</p>
                             </td>
                             <td className="px-6 py-4 whitespace-nowrap">
-                                <p className="text-sm font-medium text-gray-900">${(order.price * order.quantityOrdered).toFixed(2)}</p>
+                                <p className="text-sm font-medium text-gray-900">${(topproduct.price * topproduct.numberOrdered).toFixed(2)}</p>
                             </td>
                             <td className="px-6 py-4 whitespace-nowrap">
-                                <p className="text-sm font-medium text-gray-900">{order.status}</p>
+                                <p className="text-sm font-medium text-gray-900">{topproduct.rating}</p>
+                            </td>
+                            <td className="px-6 py-4 whitespace-nowrap">
+                                <p className="text-sm font-medium text-gray-900">{topproduct.price}</p>
                             </td>
                         </tr>
                     ))}

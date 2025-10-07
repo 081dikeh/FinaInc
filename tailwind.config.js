@@ -22,7 +22,7 @@ export default {
           500: '#1A1C21',  // Main brand color
           600: '#9333ea',
           700: '#7e22ce',
-          800: '#14CB74',
+          800: '#F3F0FE',
           900: '#F16363',
         }
       }

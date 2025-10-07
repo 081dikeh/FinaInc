@@ -1,11 +1,15 @@
 import RevenueChart from "../components/layout/RevenueChart";
 import StatCard from "../components/layout/StatCard"
 import Orders from "../components/Orders"
-import { revenueData, ordersData} from '../data/mockData';
+import TopProducts from "../components/TopProducts";
+import { revenueData, ordersData, topProductsData } from '../data/mockData';
+
+//import { Chevron}
+
+
 export default function DashBoardPage() {
   return (
     <div>
-      <h1>Dashboard</h1>
           <div className="grid grid-cols-4 gap-4">
              <StatCard 
               title="Total Revenue" 
@@ -32,8 +36,13 @@ export default function DashBoardPage() {
               isPositive={true}
             />
           </div>
-          <RevenueChart data={revenueData} />
-          <Orders data={ordersData} />
+
+          <div className="flex flex-col gap-7 mt-4">
+            <RevenueChart data={revenueData} />
+            <Orders data={ordersData} />
+            <TopProducts data={topProductsData} />
+          </div>
+          
     </div>
   );
 }

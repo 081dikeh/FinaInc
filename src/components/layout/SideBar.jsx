@@ -13,7 +13,7 @@ export default function SideBar() {
 
 
   return (
-    <div className=" h-screen bg-white">
+    <div className=" h-screen bg-white fixed top-0 left-0 h-screen w-64 overflow-y-auto">
         <aside className="w-64 p-6">
             <div className="mb-8">
                 <h2 className=" text-xl text-brand-400 font-semibold">Fina Inc</h2>
