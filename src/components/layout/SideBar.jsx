@@ -1,5 +1,6 @@
 import { NavLink } from "react-router-dom";
 import { useState } from "react";
+import FinaLogo from '../../assets/FinaLogo.png'
 
 export default function SideBar() {
   
@@ -16,7 +17,7 @@ export default function SideBar() {
     <div className=" h-screen bg-white fixed top-0 left-0 h-screen w-64 overflow-y-auto">
         <aside className="w-64 p-6">
             <div className="mb-8">
-                <h2 className=" text-xl text-brand-400 font-semibold">Fina Inc</h2>
+                <h2 className=" text-xl text-brand-400 font-semibold flex items-center gap-2"><img src={FinaLogo} alt="" />Fina Inc</h2>
             </div>
 
             <nav className=" flex flex-col gap-4 text-base text-brand-300">
