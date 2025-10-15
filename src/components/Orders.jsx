@@ -68,7 +68,7 @@ export default function Orders({ data }) {
 
     
     return (
-        <div className="bg-white rounded-lg shadow overflow-hidden">
+        <div className="bg-white rounded-lg shadow overflow-hidden col-span-2">
             <div className="p-6 border-b border-gray-200 flex items-center justify-between">
                 <h3 className="text-lg font-semibold">Recent Orders</h3>
                 <Link className="text-brand-600 hover:underline">View all &#8594;</Link>

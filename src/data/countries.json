@@ -1,0 +1,31 @@
+{
+  "US": {
+    "name": "United States",
+    "total": 50960,
+    "growth": "+12%",
+    "regions": [
+      { "id": "CA", "name": "California", "customers": 12590 },
+      { "id": "NY", "name": "New York", "customers": 12590 },
+      { "id": "TX", "name": "Texas", "customers": 12590 },
+      { "id": "FL", "name": "Florida", "customers": 10180 }
+    ]
+  },
+  "GB": {
+    "name": "United Kingdom",
+    "total": 34200,
+    "growth": "+8%",
+    "regions": [
+      { "id": "LDN", "name": "London", "customers": 15400 },
+      { "id": "MAN", "name": "Manchester", "customers": 8900 }
+    ]
+  },
+  "DE": {
+    "name": "Germany",
+    "total": 28950,
+    "growth": "+15%",
+    "regions": [
+      { "id": "BER", "name": "Berlin", "customers": 10200 },
+      { "id": "MUN", "name": "Munich", "customers": 8750 }
+    ]
+  }
+}
