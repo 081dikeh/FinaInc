@@ -3,7 +3,7 @@ import { AreaChart, Area,  XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveConta
 export default function RevenueChart({ data }) {
 
     return (
-        <div className="bg-white p-6 rounded-lg shadow col-span-2">
+        <div className="bg-white p-6 rounded-lg shadow col-span-5">
             <div className='flex justify-between items-center mb-4'>
                 <div>
                     <h3 className='text-xl text-brand-500'>Revenue</h3>

@@ -41,17 +41,17 @@ export default function DashBoardPage() {
           </div>
 
           <div className="flex flex-col gap-6 mt-6">
-            <div className="grid grid-cols-3 gap-4">
+            <div className="grid grid-cols-7 gap-4">
               <RevenueChart data={revenueData} />
               <CustGrowth/>
             </div>
             
-            <div className="grid grid-cols-3 gap-4">
+            <div className="grid grid-cols-7 gap-4">
               <Orders data={ordersData} />
               <UserActivity/>
             </div>
 
-            <div className="grid grid-cols-3 gap-4">
+            <div className="grid grid-cols-7 gap-4">
               <TopProducts data={topProductsData} />
               <CustomerList/>
             </div>

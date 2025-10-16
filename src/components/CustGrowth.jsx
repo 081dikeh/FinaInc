@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { ZoomIn, ZoomOut, ArrowRight } from 'lucide-react';
 import { stateData, statePaths } from '../data/countryConfigs'
+import { Link } from 'react-router-dom';
+
 
 const CustomerGrowthDashboard = () => {
   const [hoveredState, setHoveredState] = useState(null);
@@ -35,14 +37,11 @@ const CustomerGrowthDashboard = () => {
 
 
   return (
-    <div className="w-full max-w-md bg-white rounded-lg shadow-xl p-6 col-span-1">
+    <div className="w-full max-w-md bg-white rounded-lg shadow-xl p-6 col-span-2">
       {/* Header */}
       <div className="flex justify-between items-center mb-6">
         <h2 className="text-xl font-bold text-gray-900">Customer Growth</h2>
-        <button className="text-brand-600 text-sm flex items-center gap-1 hover:text-blue-700 transition-colors">
-          View all
-          <ArrowRight size={16} />
-        </button>
+        <Link className="text-brand-600 hover:underline">View all &#8594;</Link>
       </div>
 
       {/* Map Container */}

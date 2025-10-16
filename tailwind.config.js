@@ -12,6 +12,7 @@ export default {
         },
         secondary: {
           light: '#63F1B4',
+          dark: '#FC9736',
         },
         brand: {
           50: '#faf5ff',
@@ -24,7 +25,7 @@ export default {
           700: '#7e22ce',
           800: '#F3F0FE',
           900: '#F16363',
-        }
+        },       
       }
     },
   },
