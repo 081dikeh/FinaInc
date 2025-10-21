@@ -6,10 +6,10 @@ import Orders from "../components/Orders"
 import TopProducts from "../components/TopProducts";
 import UserActivity from "../components/UserActivity";
 import { revenueData, ordersData, topProductsData } from '../data/mockData';
-import iconBadge1 from '../assets/dashboardAssets/icon-badge1.png';
-import iconBadge2 from '../assets/dashboardAssets/icon-badge2.png';
-import iconBadge3 from '../assets/dashboardAssets/icon-badge3.png';
-import iconBadge4 from '../assets/dashboardAssets/icon-badge4.png';
+import iconBadge1 from '../assets/dashboard-assets/icon-badge1.png';
+import iconBadge2 from '../assets/dashboard-assets/icon-badge2.png';
+import iconBadge3 from '../assets/dashboard-assets/icon-badge3.png';
+import iconBadge4 from '../assets/dashboard-assets/icon-badge4.png';
 
 
 //import { Chevron}
