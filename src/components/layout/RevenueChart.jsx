@@ -1,7 +1,7 @@
 import { AreaChart, Area,  XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
-import storeIcon from '../../assets/dashboardAssets/store-icon.png';
-import ecommerceIcon from '../../assets/dashboardAssets/icon-badge3.png';
-import websiteIcon from '../../assets/dashboardAssets/website-icon.png';
+import storeIcon from '../../assets/dashboard-assets/store-icon.png';
+import ecommerceIcon from '../../assets/dashboard-assets/icon-badge3.png';
+import websiteIcon from '../../assets/dashboard-assets/website-icon.png';
 
 export default function RevenueChart({ data }) {
 
