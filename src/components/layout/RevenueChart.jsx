@@ -1,4 +1,7 @@
 import { AreaChart, Area,  XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
+import storeIcon from '../../assets/dashboardAssets/store-icon.png';
+import ecommerceIcon from '../../assets/dashboardAssets/icon-badge3.png';
+import websiteIcon from '../../assets/dashboardAssets/website-icon.png';
 
 export default function RevenueChart({ data }) {
 
@@ -16,8 +19,8 @@ export default function RevenueChart({ data }) {
             {/* stats card */}
             <div className="grid grid-cols-3 gap-4 mb-6">
                 <div className="flex items-center gap-3">
-                <div className="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center">
-                    <span className="text-purple-600">🌐</span>
+                <div className="w-10 h-10 flex items-center justify-center">
+                    <img src={websiteIcon} alt="" />
                 </div>
                 <div>
                     <p className="text-xs text-brand-200">Website</p>
@@ -26,8 +29,8 @@ export default function RevenueChart({ data }) {
                 </div>
 
                 <div className="flex items-center gap-3">
-                <div className="w-10 h-10 bg-orange-100 rounded-lg flex items-center justify-center">
-                    <span className="text-orange-600">🛒</span>
+                <div className="w-10 h-10 flex items-center justify-center">
+                    <img src={ecommerceIcon} alt="" />
                 </div>
                 <div>
                     <p className="text-xs text-brand-200">E-Commerce</p>
@@ -36,8 +39,8 @@ export default function RevenueChart({ data }) {
                 </div>
 
                 <div className="flex items-center gap-3">
-                <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
-                    <span className="text-blue-600">🏪</span>
+                <div className="w-10 h-10 flex items-center justify-center">
+                    <img src={storeIcon} alt="" />
                 </div>
                 <div>
                     <p className="text-xs text-brand-200">Store</p>

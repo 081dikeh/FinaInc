@@ -6,6 +6,11 @@ import Orders from "../components/Orders"
 import TopProducts from "../components/TopProducts";
 import UserActivity from "../components/UserActivity";
 import { revenueData, ordersData, topProductsData } from '../data/mockData';
+import iconBadge1 from '../assets/dashboardAssets/icon-badge1.png';
+import iconBadge2 from '../assets/dashboardAssets/icon-badge2.png';
+import iconBadge3 from '../assets/dashboardAssets/icon-badge3.png';
+import iconBadge4 from '../assets/dashboardAssets/icon-badge4.png';
+
 
 //import { Chevron}
 
@@ -13,27 +18,35 @@ import { revenueData, ordersData, topProductsData } from '../data/mockData';
 export default function DashBoardPage() {
   return (
     <div>
+        <div className="mb-6">
+          <h1 className="text-3xl text-brand-500 font-semibold">Welcome Back Bryan</h1>
+          <p className="text-base text-brand-200">Here’s what happening with your store today</p>
+        </div>
           <div className="grid grid-cols-4 gap-4">
              <StatCard 
               title="Total Revenue" 
+              titleIcon={iconBadge1} 
               value="$86,120" 
               change="+10%" 
               isPositive={true}
             />
             <StatCard 
-              title="Total Customers" 
+              title="Total Customers"
+              titleIcon={iconBadge2} 
               value="21,400" 
               change="+5%" 
               isPositive={true}
             />
             <StatCard 
-              title="Total Orders" 
+              title="Total Orders"
+              titleIcon={iconBadge3} 
               value="3,472" 
               change="-2%" 
               isPositive={false}
             />
             <StatCard 
               title="Total Products" 
+              titleIcon={iconBadge4}
               value="143" 
               change="+8%" 
               isPositive={true}

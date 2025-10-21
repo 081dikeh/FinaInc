@@ -4,9 +4,8 @@ import { customers } from '../data/userActivity';
 
 export default function CustomerList() {
 
-
-  return (
-    <div className="w-full max-w-md bg-white rounded-lg shadow-xl p-6 col-span-2">
+return (
+    <div className="w-full relative max-w-md bg-white rounded-lg shadow-xl p-6 col-span-2">
       {/* Header */}
       <div className="mb-4">
         <div className="flex justify-between items-center mb-2">
@@ -55,13 +54,13 @@ export default function CustomerList() {
       </div>
 
       {/* Purple Gradient Scrollbar Indicator (Right Edge) */}
-      <div 
+      {/* <div 
         className="absolute right-0 top-24 bottom-6 w-1 pointer-events-none"
         style={{
           background: 'linear-gradient(180deg, rgba(139, 92, 246, 0) 0%, rgba(139, 92, 246, 1) 20%, rgba(139, 92, 246, 1) 80%, rgba(139, 92, 246, 0) 100%)',
           borderRadius: '10px'
         }}
-      />
+      /> */}
 
       {/* Custom Scrollbar Styles for Webkit Browsers */}
       <style>{`
@@ -86,4 +85,7 @@ export default function CustomerList() {
       `}</style>
     </div>
   );
+  
 };
+
+
