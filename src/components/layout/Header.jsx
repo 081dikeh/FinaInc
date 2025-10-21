@@ -36,7 +36,7 @@ export default function Header() {
           <button className="p-2 hover:bg-gray-100 rounded-lg transition-colors relative">
             <Bell className="text-gray-600" size={22} />
             {notificationCount > 0 && (
-              <span className="absolute top-0 right-0 bg-pink-500 text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center">
+              <span className="absolute top-0 right-0 bg-brand-900 text-white text-[10px] font-bold rounded-full w-5 h-5 flex items-center justify-center">
                 {notificationCount}
               </span>
             )}
