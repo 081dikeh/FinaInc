@@ -1,6 +1,6 @@
 import { useState, useMemo } from "react";
-import { Link } from "react-router-dom";
-import { ChevronLeft, ChevronRight, ArrowRight } from "lucide-react";
+import ViewAll from "./ViewAll";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 
 
@@ -70,15 +70,15 @@ export default function Orders({ data }) {
     const getStatusClasses = (status) => {
         switch ((status || "").toLowerCase()) {
             case "processing":
-            return "bg-orange-50 text-orange-800";
+            return "bg-orange-50 text-orange-500";
             case "shipping":
             case "shipped":
-            return "bg-blue-50 text-blue-800";
+            return "bg-blue-50 text-blue-500";
             case "delivered":
-            return "bg-green-50 text-green-800";
+            return "bg-green-50 text-green-500";
             case "cancelled":
             case "canceled":
-            return "bg-red-50 text-red-800";
+            return "bg-red-50 text-red-500";
             default:
             return "bg-gray-50 text-gray-700";
         }
@@ -89,7 +89,7 @@ export default function Orders({ data }) {
         <div className="bg-white rounded-lg shadow overflow-hidden col-span-5">
             <div className="p-6 border-b border-gray-200 flex items-center justify-between">
                 <h3 className="text-xl text-brand-500 font-semibold">Recent Orders</h3>
-                <Link className="text-brand-600 hover:underline flex gap-1 items-center font-[500]">View all <ArrowRight size={20} /></Link>
+                <ViewAll />
             </div>
 
             <div className="overflow-x-auto">

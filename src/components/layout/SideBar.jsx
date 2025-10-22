@@ -1,7 +1,6 @@
 import { NavLink } from "react-router-dom";
-import { useState } from "react";
 import FinaLogo from '../../assets/FinaLogo.png'
-import { ClipboardCheck, MessageSquareText, Calendar, LayoutGrid, ShoppingCart, Rocket, Banknote } from 'lucide-react';
+import { ClipboardCheck, MessageSquareText, Calendar, LayoutGrid, ShoppingCart, Rocket, Banknote, Phone, CircleQuestionMark } from 'lucide-react';
 
 
 
@@ -18,7 +17,7 @@ export default function SideBar() {
 
   return (
     <div className=" h-screen bg-white fixed top-0 left-0 h-screen w-64 overflow-y-auto">
-        <aside className="w-64 p-6">
+        <aside className="w-64 p-6 flex flex-col justify-between h-full">
             <div className="mb-8">
                 <h2 className=" text-xl text-brand-400 font-semibold flex items-center gap-2"><img src={FinaLogo} alt="" />Fina Inc</h2>
             </div>
@@ -59,6 +58,11 @@ export default function SideBar() {
                   Chat
                 </NavLink>
             </nav>
+
+            <div className="mt-auto text-base text-brand-300 font-[500]">
+                <a href="" className="flex gap-2 px-6 py-3"><CircleQuestionMark />Support</a>
+                <a href="" className="flex gap-2 px-6 py-3"><Phone />Contact Us</a>
+            </div>
         </aside>
     </div>
   );

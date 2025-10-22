@@ -1,9 +1,9 @@
-import { useState, useMemo } from "react";
-import { Link } from "react-router-dom";
-import { ChevronLeft, ChevronRight, ArrowRight } from "lucide-react";
+import { useState } from "react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
+import ViewAll from "./ViewAll";
 
 export default function TopProducts({ data }) {
-        const [sortField, setSortField] = useState(null);
+    const [sortField, setSortField] = useState(null);
     const [sortDirection, setSortDirection] = useState('asc');
     //pagination state
     const [currentPage, setCurrentPage] = useState(1);
@@ -68,7 +68,7 @@ export default function TopProducts({ data }) {
         <div className="bg-white rounded-lg shadow overflow-hidden col-span-5">
             <div className="p-6 border-b border-gray-200 flex items-center justify-between">
                 <h3 className="text-xl text-brand-500 font-semibold">Top Products</h3>
-                <Link className="text-brand-600 hover:underline flex gap-1 items-center font-[500]">View all <ArrowRight size={20} /></Link>
+                <ViewAll />
             </div>
 
             <div className="overflow-x-auto">

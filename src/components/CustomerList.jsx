@@ -1,17 +1,14 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
 import { customers } from '../data/userActivity';
-import { ArrowRight } from 'lucide-react';
-
+import ViewAll from "./ViewAll";
 export default function CustomerList() {
 
 return (
-    <div className="w-full relative max-w-md bg-white rounded-lg shadow-xl p-6 col-span-2">
+    <div className="w-full relative bg-white rounded-lg shadow-xl p-6 col-span-2">
       {/* Header */}
       <div className="mb-4">
         <div className="flex justify-between items-center mb-2">
           <h2 className="text-xl text-brand-500 font-semibold">Customer List</h2>
-          <Link className="text-brand-600 hover:underline flex gap-1 items-center font-[500]">View all <ArrowRight size={20} /></Link>
+          <ViewAll />
         </div>
         <p className="text-sm text-gray-500">+12 New Customer This Day</p>
       </div>

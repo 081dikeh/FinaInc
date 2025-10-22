@@ -12,7 +12,7 @@ export default function UserActivity() {
   const totalCheckOut = weeklyData.reduce((sum, item) => sum + item.checkOut, 0);
 
   return (
-    <div className="w-full max-w-md bg-white rounded-lg shadow-xl p-6 flex flex-col justify-between col-span-2">
+    <div className="w-full bg-white rounded-lg shadow-xl p-6 flex flex-col justify-between col-span-2">
       
       <div className="flex justify-between items-center mb-6">
         <h2 className="text-xl text-brand-500 font-semibold">User Activity</h2>
