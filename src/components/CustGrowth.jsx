@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { ZoomIn, ZoomOut, ArrowRight } from 'lucide-react';
 import { stateData, statePaths } from '../data/countryConfigs'
 import { Link } from 'react-router-dom';
-import React from 'react';
+
 
 
 const CustomerGrowthDashboard = () => {
