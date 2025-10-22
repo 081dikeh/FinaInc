@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { ZoomIn, ZoomOut, ArrowRight } from 'lucide-react';
 import { stateData, statePaths } from '../data/countryConfigs'
 import { Link } from 'react-router-dom';
+import React from 'react';
 
 
 const CustomerGrowthDashboard = () => {
@@ -40,8 +41,8 @@ const CustomerGrowthDashboard = () => {
     <div className="w-full max-w-md bg-white rounded-lg shadow-xl p-6 col-span-2">
       {/* Header */}
       <div className="flex justify-between items-center mb-6">
-        <h2 className="text-xl font-bold text-gray-900">Customer Growth</h2>
-        <Link className="text-brand-600 hover:underline">View all &#8594;</Link>
+        <h2 className="text-xl text-brand-500 font-semibold">Customer Growth</h2>
+        <Link className="text-brand-600 hover:underline flex gap-1 items-center font-[500]">View all <ArrowRight size={20} /></Link>
       </div>
 
       {/* Map Container */}

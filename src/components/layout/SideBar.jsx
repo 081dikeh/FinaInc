@@ -8,7 +8,7 @@ import { ClipboardCheck, MessageSquareText, Calendar, LayoutGrid, ShoppingCart, 
 export default function SideBar() {
   
   const getLinkClass = ({ isActive }) => {
-    return `px-6 py-3 transition-all duration-300 flex gap-2 ${
+    return `px-6 py-3 transition-all duration-300 flex gap-2 font-[500] ${
       isActive 
         ? 'bg-primary-light text-white p-2 rounded-md' 
         : 'bg-white'

@@ -10,6 +10,7 @@ import iconBadge1 from "../assets/dashboard-assets/icon-badge1.png";
 import iconBadge2 from "../assets/dashboard-assets/icon-badge2.png";
 import iconBadge3 from "../assets/dashboard-assets/icon-badge3.png";
 import iconBadge4 from "../assets/dashboard-assets/icon-badge4.png";
+import { ArrowDownRight } from "lucide-react";
 
 //import { Chevron}
 

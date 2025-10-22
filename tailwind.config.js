@@ -26,6 +26,9 @@ export default {
           800: '#F3F0FE',
           900: '#F16363',
         },       
+      },
+      fontFamily: {
+        geist: ["Geist", "sans-serif"], // Custom font family
       }
     },
   },

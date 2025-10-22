@@ -1,6 +1,6 @@
 import { useState, useMemo } from "react";
 import { Link } from "react-router-dom";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight, ArrowRight } from "lucide-react";
 
 export default function TopProducts({ data }) {
         const [sortField, setSortField] = useState(null);
@@ -60,15 +60,15 @@ export default function TopProducts({ data }) {
         return pages;
     };
     
-    const activeStyle = "px-3 py-1 bg-brand-600 text-white rounded";
-    const normalStyle = "px-3 py-1 bg-white text-brand-600 border border-brand-600 rounded hover:bg-brand-600 hover:text-white transition";
+    const activeStyle = "px-3 py-1 bg-primary-light text-white rounded-lg font-semibold";
+    const normalStyle = "px-3 py-1 bg-white text-brand-200 font-semibold rounded hover:bg-brand-600 hover:text-white transition";
 
     
     return (
         <div className="bg-white rounded-lg shadow overflow-hidden col-span-5">
             <div className="p-6 border-b border-gray-200 flex items-center justify-between">
-                <h3 className="text-lg font-semibold">Top Products</h3>
-                <Link className="text-brand-600 hover:underline">View all &#8594;</Link>
+                <h3 className="text-xl text-brand-500 font-semibold">Top Products</h3>
+                <Link className="text-brand-600 hover:underline flex gap-1 items-center font-[500]">View all <ArrowRight size={20} /></Link>
             </div>
 
             <div className="overflow-x-auto">
@@ -151,9 +151,9 @@ export default function TopProducts({ data }) {
                         <button
                             onClick={() => handlePageChange(currentPage - 1)}
                             disabled={currentPage === 1}
-                            className=" p-1 rounded hover:bg-brand-600 transition bg-brand-800 "
+                            className=" p-1 rounded-lg hover:bg-brand-600 transition bg-brand-800 "
                         >
-                            <ChevronLeft className=" text-brand-600 text-base hover:text-white transition" />
+                            <ChevronLeft className=" text-primary-light text-base hover:text-white transition" />
                         </button>
 
                         {/* Page number buttons */}
@@ -175,9 +175,9 @@ export default function TopProducts({ data }) {
                         <button
                             onClick={() => handlePageChange(currentPage + 1)}
                             disabled={currentPage === totalPages}
-                            className=" p-1 rounded hover:bg-brand-600 transition bg-brand-800 "
+                            className=" p-1 rounded-lg hover:bg-brand-600 transition bg-brand-800 "
                         >
-                            <ChevronRight className=" text-brand-600 text-base hover:text-white transition" />
+                            <ChevronRight className=" text-primary-light text-base hover:text-white transition" />
                         </button>
                     </div>
                 </div>

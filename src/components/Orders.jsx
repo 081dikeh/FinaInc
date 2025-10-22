@@ -1,6 +1,6 @@
 import { useState, useMemo } from "react";
 import { Link } from "react-router-dom";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight, ArrowRight } from "lucide-react";
 
 
 
@@ -63,15 +63,33 @@ export default function Orders({ data }) {
         return pages;
     };
     
-    const activeStyle = "px-3 py-1 bg-brand-600 text-white rounded";
-    const normalStyle = "px-3 py-1 bg-white text-brand-600 border border-brand-600 rounded hover:bg-brand-600 hover:text-white transition";
+    const activeStyle = "px-3 py-1 bg-primary-light text-white rounded-lg font-semibold";
+    const normalStyle = "px-3 py-1 bg-white text-brand-200 font-semibold rounded hover:bg-brand-600 hover:text-white transition";
+
+    // Function to get status badge classes
+    const getStatusClasses = (status) => {
+        switch ((status || "").toLowerCase()) {
+            case "processing":
+            return "bg-orange-50 text-orange-800";
+            case "shipping":
+            case "shipped":
+            return "bg-blue-50 text-blue-800";
+            case "delivered":
+            return "bg-green-50 text-green-800";
+            case "cancelled":
+            case "canceled":
+            return "bg-red-50 text-red-800";
+            default:
+            return "bg-gray-50 text-gray-700";
+        }
+    };
 
     
     return (
         <div className="bg-white rounded-lg shadow overflow-hidden col-span-5">
             <div className="p-6 border-b border-gray-200 flex items-center justify-between">
-                <h3 className="text-lg font-semibold">Recent Orders</h3>
-                <Link className="text-brand-600 hover:underline">View all &#8594;</Link>
+                <h3 className="text-xl text-brand-500 font-semibold">Recent Orders</h3>
+                <Link className="text-brand-600 hover:underline flex gap-1 items-center font-[500]">View all <ArrowRight size={20} /></Link>
             </div>
 
             <div className="overflow-x-auto">
@@ -79,25 +97,25 @@ export default function Orders({ data }) {
                     <thead className="bg-gray-50">
                         <tr>
                             <th 
-                                className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase cursor-pointer hover:bg-gray-100"
+                                className="px-6 py-3 text-left text-xs font-semibold text-gray-500 uppercase cursor-pointer hover:bg-gray-100"
                                 onClick={() => handleSort('productName')}
                             >
                                 PRODUCT
                             </th>
                             <th 
-                                className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase cursor-pointer hover:bg-gray-100"
+                                className="px-6 py-3 text-left text-xs font-semibold text-gray-500 uppercase cursor-pointer hover:bg-gray-100"
                                 onClick={() => handleSort('customerName')}
                             >
                                 CUSTOMER
                             </th>
                             <th 
-                                className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase cursor-pointer hover:bg-gray-100"
+                                className="px-6 py-3 text-left text-xs font-semibold text-gray-500 uppercase cursor-pointer hover:bg-gray-100"
                                 onClick={() => handleSort('price')}
                             >
                                 TOTAL
                             </th>
                             <th 
-                                className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase cursor-pointer hover:bg-gray-100"
+                                className="px-6 py-3 text-left text-xs font-semibold text-gray-500 uppercase cursor-pointer hover:bg-gray-100"
                                 onClick={() => handleSort('status')}
                             >
                                 STATUS
@@ -126,7 +144,7 @@ export default function Orders({ data }) {
                                 <p className="text-sm font-medium text-gray-900">${(order.price * order.quantityOrdered).toFixed(2)}</p>
                             </td>
                             <td className="px-6 py-4 whitespace-nowrap">
-                                <p className="text-sm font-medium text-gray-900">{order.status}</p>
+                                <p className={`text-sm rounded-2xl px-3 py-1 w-[fit-content] font-medium text-gray-900 ${getStatusClasses(order.status)}`}>{order.status}</p>
                             </td>
                         </tr>
                     ))}
@@ -148,9 +166,9 @@ export default function Orders({ data }) {
                         <button
                             onClick={() => handlePageChange(currentPage - 1)}
                             disabled={currentPage === 1}
-                            className=" p-1 rounded hover:bg-brand-600 transition bg-brand-800 "
+                            className=" p-1 rounded-lg hover:bg-brand-600 transition bg-brand-800 "
                         >
-                            <ChevronLeft className=" text-brand-600 text-base hover:text-white transition" />
+                            <ChevronLeft className=" text-primary-light text-base hover:text-white transition" />
                         </button>
 
                         {/* Page number buttons */}
@@ -172,9 +190,9 @@ export default function Orders({ data }) {
                         <button
                             onClick={() => handlePageChange(currentPage + 1)}
                             disabled={currentPage === totalPages}
-                            className=" p-1 rounded hover:bg-brand-600 transition bg-brand-800 "
+                            className=" p-1 rounded-lg hover:bg-brand-600 transition bg-brand-800 "
                         >
-                            <ChevronRight className=" text-brand-600 text-base hover:text-white transition" />
+                            <ChevronRight className=" text-primary-light text-base hover:text-white transition" />
                         </button>
                     </div>
                 </div>

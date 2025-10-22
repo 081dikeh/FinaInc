@@ -15,7 +15,7 @@ import Campaign from './pages/Campaign'
 function App() {
   return (
     <BrowserRouter>
-    <div className="flex min-h-screen bg-gray-100">
+    <div className="flex min-h-screen bg-gray-100 font-geist">
       <SideBar />
       <div className="flex-1 flex flex-col">
         <Header />

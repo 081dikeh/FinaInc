@@ -48,7 +48,7 @@ export const ordersData = [
     customerEmail: "charles.l@example.com",
     productImage: "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=400",
     price: 749.50,
-    status: "Pending",
+    status: "Processing",
   },
   {
     orderId: 4,
@@ -127,7 +127,7 @@ export const ordersData = [
     customerEmail: "kevin.o@example.com",
     productImage: "https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?w=400",
     price: 45.00,
-    status: "Pending",
+    status: "Processing",
   },
   {
     orderId: 11,
@@ -195,7 +195,7 @@ export const ordersData = [
     customerEmail: "rachel.h@example.com",
     productImage: "https://images.unsplash.com/photo-1590658268037-6bf12165a8df?w=400",
     price: 89.99,
-    status: "Pending",
+    status: "Processing",
   },
   {
     orderId: 17,
@@ -240,7 +240,7 @@ export const ordersData = [
     customerEmail: "wendy.c@example.com",
     productImage: "https://images.unsplash.com/photo-1575311373937-040b8e1fd5b6?w=400",
     price: 59.99,
-    status: "Pending",
+    status: "Processing",
   },
   {
     orderId: 21,
@@ -317,7 +317,7 @@ export const ordersData = [
     customerEmail: "drew.e@example.com",
     productImage: "https://images.unsplash.com/photo-1603302576837-37561b2e2302?w=400",
     price: 2599.00,
-    status: "Pending",
+    status: "Processing",
   },
   {
     orderId: 28,
@@ -395,7 +395,7 @@ export const ordersData = [
     customerEmail: "lily.m@example.com",
     productImage: "https://images.unsplash.com/photo-1519638399535-1b036603ac77?w=400",
     price: 299.00,
-    status: "Pending",
+    status: "Processing",
   },
   {
     orderId: 35,
@@ -461,7 +461,7 @@ export const ordersData = [
     customerEmail: "rita.p@example.com",
     productImage: "https://images.unsplash.com/photo-1473968512647-3e447244af8f?w=400",
     price: 899.00,
-    status: "Pending",
+    status: "Processing",
   },
   {
     orderId: 41,
@@ -527,7 +527,7 @@ export const ordersData = [
     customerEmail: "xavier.c@example.com",
     productImage: "https://images.unsplash.com/photo-1622979135225-d2ba269cf1ac?w=400",
     price: 499.00,
-    status: "Pending",
+    status: "Processing",
   },
   {
     orderId: 47,
@@ -582,7 +582,7 @@ export const ordersData = [
     customerEmail: "carol.j@example.com",
     productImage: "https://images.unsplash.com/photo-1605901309584-818e25960a8f?w=400",
     price: 59.99,
-    status: "Pending",
+    status: "Processing",
   },
   {
     orderId: 52,
@@ -648,7 +648,7 @@ export const ordersData = [
     customerEmail: "iris.c@example.com",
     productImage: "https://images.unsplash.com/photo-1620236682351-87e5e8c6c5c1?w=400",
     price: 19.99,
-    status: "Pending",
+    status: "Processing",
   },
   {
     orderId: 58,

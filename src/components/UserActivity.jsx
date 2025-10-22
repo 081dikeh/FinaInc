@@ -6,7 +6,7 @@ import { weeklyData} from '../data/userActivity'
 export default function UserActivity() {
   const [timeRange, setTimeRange] = useState('This Week');
 
-
+ 
   //Calculate totals for bottom summary
   const totalProductViewed = weeklyData.reduce((sum, item) => sum + item.productViewed, 0);
   const totalCheckOut = weeklyData.reduce((sum, item) => sum + item.checkOut, 0);
@@ -15,7 +15,7 @@ export default function UserActivity() {
     <div className="w-full max-w-md bg-white rounded-lg shadow-xl p-6 flex flex-col justify-between col-span-2">
       
       <div className="flex justify-between items-center mb-6">
-        <h2 className="text-xl font-bold text-gray-900">User Activity</h2>
+        <h2 className="text-xl text-brand-500 font-semibold">User Activity</h2>
         <button className="flex items-center gap-2 px-4 py-2 text-sm text-gray-600 hover:bg-gray-50 rounded-lg transition-colors">
           {timeRange}
           <ChevronDown size={16} />
@@ -26,11 +26,11 @@ export default function UserActivity() {
       <div className="flex items-center justify-center gap-6 mb-6">
         <div className="flex items-center gap-2">
           <div className="w-3 h-3 rounded-full bg-secondary-dark"></div>
-          <span className="text-xs text-gray-600">Product Viewed</span>
+          <span className="text-xs text-gray-600 font-[500]">Product Viewed</span>
         </div>
         <div className="flex items-center gap-2">
           <div className="w-3 h-3 rounded-full bg-primary-light"></div>
-          <span className="text-xs text-gray-600">Check Out</span>
+          <span className="text-xs text-gray-600 font-[500]">Check Out</span>
         </div>
       </div>
 
@@ -111,15 +111,15 @@ export default function UserActivity() {
       {/* SUMMARY: Total numbers at the bottom */}
       <div className="flex justify-around pt-4">
         <div className="text-center">
-          <p className="text-sm text-gray-600 mb-1">Product Viewed</p>
-          <p className="text-2xl font-bold text-gray-900">
+          <p className="text-sm text-gray-600 mb-1 font-[500]">Product Viewed</p>
+          <p className="text-2xl font-semibold text-gray-900">
             {totalProductViewed.toLocaleString()}
           </p>
         </div>
         <div className="w-px"></div>
         <div className="text-center">
-          <p className="text-sm text-gray-600 mb-1">Check Out</p>
-          <p className="text-2xl font-bold text-gray-900">
+          <p className="text-sm text-gray-600 mb-1 font-[500]">Check Out</p>
+          <p className="text-2xl font-semibold text-gray-900">
             {totalCheckOut.toLocaleString()}
           </p>
         </div>

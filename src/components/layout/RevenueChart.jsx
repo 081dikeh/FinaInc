@@ -9,43 +9,43 @@ export default function RevenueChart({ data }) {
         <div className="bg-white p-6 rounded-lg shadow col-span-5">
             <div className='flex justify-between items-center mb-4'>
                 <div>
-                    <h3 className='text-xl text-brand-500'>Revenue</h3>
+                    <h3 className='text-xl text-brand-500 font-semibold'>Revenue</h3>
                     <p className='text-sm text-brand-100'>Based on Source</p>
                 </div>           
-                <button className="text-gray-400">⋮</button>
+                <button className="text-brand-200 font-bold text-xl hover:text-brand-500 transition ">⋮</button>
             </div>
             
 
             {/* stats card */}
             <div className="grid grid-cols-3 gap-4 mb-6">
-                <div className="flex items-center gap-3">
-                <div className="w-10 h-10 flex items-center justify-center">
-                    <img src={websiteIcon} alt="" />
-                </div>
-                <div>
-                    <p className="text-xs text-brand-200">Website</p>
-                    <p className="text-lg font-bold text-brand-500">$6,650.05</p>
-                </div>
-                </div>
-
-                <div className="flex items-center gap-3">
-                <div className="w-10 h-10 flex items-center justify-center">
-                    <img src={ecommerceIcon} alt="" />
-                </div>
-                <div>
-                    <p className="text-xs text-brand-200">E-Commerce</p>
-                    <p className="text-lg font-bold text-brand-500">$6,650.05</p>
-                </div>
+                <div className="flex items-center gap-1">
+                    <div className="w-10 h-10 flex items-center justify-center">
+                        <img src={websiteIcon} className='w-[32px]' alt="" />
+                    </div>
+                    <div>
+                        <p className="text-xs text-brand-200 font-[500]">Website</p>
+                        <p className="text-lg font-bold text-brand-500">$6,650.05</p>
+                    </div>
                 </div>
 
-                <div className="flex items-center gap-3">
-                <div className="w-10 h-10 flex items-center justify-center">
-                    <img src={storeIcon} alt="" />
+                <div className="flex items-center gap-1">
+                    <div className="w-10 h-10 flex items-center justify-center">
+                        <img src={ecommerceIcon} className='w-[32px]' alt="" />
+                    </div>
+                    <div>
+                        <p className="text-xs text-brand-200 font-[500]">E-Commerce</p>
+                        <p className="text-lg font-bold text-brand-500">$6,650.05</p>
+                    </div>
                 </div>
-                <div>
-                    <p className="text-xs text-brand-200">Store</p>
-                    <p className="text-lg font-bold text-brand-500">$6,650.05</p>
-                </div>
+
+                <div className="flex items-center gap-1">
+                    <div className="w-10 h-10 flex items-center justify-center">
+                        <img src={storeIcon} className='w-[32px]' alt="" />
+                    </div>
+                    <div>
+                        <p className="text-xs text-brand-200 font-[500]">Store</p>
+                        <p className="text-lg font-bold text-brand-500">$6,650.05</p>
+                    </div>
                 </div>
             </div>
 
@@ -66,7 +66,7 @@ export default function RevenueChart({ data }) {
                         <stop offset="95%" stopColor="#3B82F6" stopOpacity={0}/>
                         </linearGradient>
                     </defs>
-                    <CartesianGrid strokeDasharray="3 3" stroke="#e8e8e8ff" />
+                    <CartesianGrid strokeDasharray="2 2" stroke="#e8e8e8ff" />
                     <XAxis 
                         dataKey="month" 
                         tick={{ fontSize: 12 }}
@@ -80,10 +80,10 @@ export default function RevenueChart({ data }) {
                     />
                     <Tooltip 
                         contentStyle={{ 
-                        backgroundColor: '#1f2937', 
-                        border: 'none',
-                        borderRadius: '8px',
-                        color: 'white'
+                            backgroundColor: '#423577', 
+                            border: 'none',
+                            borderRadius: '8px',
+                            color: 'white'
                         }}
                     />
 
