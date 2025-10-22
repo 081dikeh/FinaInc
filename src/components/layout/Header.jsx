@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Search, Calendar, Mail, Bell, ChevronDown } from 'lucide-react';
 
 export default function Header() {
