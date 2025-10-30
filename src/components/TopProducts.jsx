@@ -61,7 +61,7 @@ export default function TopProducts({ data }) {
     };
     
     const activeStyle = "px-3 py-1 bg-primary-light text-white rounded-lg font-semibold";
-    const normalStyle = "px-3 py-1 bg-white text-brand-200 font-semibold rounded hover:bg-brand-600 hover:text-white transition";
+    const normalStyle = "px-3 py-1 bg-white text-brand-200 font-semibold rounded-lg hover:bg-primary-light hover:text-white transition";
 
     
     return (

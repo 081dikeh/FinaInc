@@ -1,0 +1,115 @@
+import Card from "./Card";
+import { useState, useRef } from "react";
+import { ChevronLeft, ChevronRight } from 'lucide-react';
+
+
+const cards = [
+  { id: 1, bgColor: "bg-[#7F63F1]", balance: "11,240.00", cardNumber: "9090", expDate: "07/25" },
+  { id: 2, bgColor: "bg-[#333843]", balance: "10,540.00", cardNumber: "9054", expDate: "02/25" },
+  { id: 3, bgColor: "bg-[#2D99FE]", balance: "15,320.00", cardNumber: "9080", expDate: "05/25" },
+  { id: 4, bgColor: "bg-[#14CB74]", balance: "30,200.00", cardNumber: "9070", expDate: "08/25" },
+];
+
+
+export default function CardContainer(){
+    const scrollContainerRef = useRef(null);
+    const [activeCard, setActiveCard] = useState(0);
+
+    function scrollLeft(){
+        if(scrollContainerRef.current){
+            scrollContainerRef.current.scrollBy({
+                left: -350,
+                behavior: 'smooth'
+            });
+            setActiveCard(Math.max(0, activeCard - 1));
+        }        
+    }
+
+    function scrollRight(){
+        if(scrollContainerRef.current){
+            scrollContainerRef.current.scrollBy({
+                left: 350,
+                behavior: 'smooth'
+            });
+            setActiveCard(Math.min(cards.length - 1, activeCard + 1));
+        }
+    }
+    
+
+    return(
+        <div className="w-full max-w-7xl mx-auto p-2">
+            <div className="relative">
+                <div 
+                    ref={scrollContainerRef}
+                    className="flex gap-6 overflow-x-auto scrollbar-hide pb-6"
+                    style={{
+                        scrollSnapType: 'x mandatory',
+                        WebkitOverflowScrolling: 'touch'
+                    }}
+                >
+                    {cards.map((c) => (
+                        <Card
+                            key={c.id}
+                            bgColor={c.bgColor}
+                            balance={c.balance}
+                            cardNumber={c.cardNumber}
+                            expDate={c.expDate}
+                        />
+                    ))}
+                </div>
+
+                {/* navigation arrows */}
+                <button 
+                    onClick={scrollLeft}
+                    disabled={activeCard === 0}
+                    className=" absolute top-1/2 left-0 transform -translate-y-1/2 "
+                >
+                    <ChevronLeft/>
+                </button>
+
+                <button 
+                    onClick={scrollRight}
+                    disabled={activeCard === cards.length - 1}
+                    className=" absolute top-1/2 right-0 transform -translate-y-1/2 "
+                >
+                    <ChevronRight/>
+                </button>
+            </div>
+
+
+            {/* Pagination Dots */}
+            <div>
+                {cards.map((_, index) => (
+                    <button
+                        key={index}
+                        onClick={() => {
+                        setActiveCard(index);
+                        if (scrollContainerRef.current) {
+                            scrollContainerRef.current.scrollTo({ 
+                            left: index * 350, 
+                            behavior: 'smooth' 
+                            });
+                        }
+                        }}
+                        className={`h-2 rounded-full transition-all ${
+                        index === activeCard 
+                            ? 'w-8 bg-purple-600' 
+                            : 'w-2 bg-gray-300'
+                        }`}
+                    />
+                 ))}
+            </div>
+            {/* Hide Scrollbar CSS */}
+                <style>{`
+                    .scrollbar-hide::-webkit-scrollbar {
+                    display: none;
+                    }
+                    .scrollbar-hide {
+                    -ms-overflow-style: none;
+                    scrollbar-width: none;
+                    }
+                `}</style>
+        </div>
+    )
+
+}

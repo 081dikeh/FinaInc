@@ -64,7 +64,7 @@ export default function Orders({ data }) {
     };
     
     const activeStyle = "px-3 py-1 bg-primary-light text-white rounded-lg font-semibold";
-    const normalStyle = "px-3 py-1 bg-white text-brand-200 font-semibold rounded hover:bg-brand-600 hover:text-white transition";
+    const normalStyle = "px-3 py-1 bg-white text-brand-200 font-semibold rounded-lg hover:bg-primary-light hover:text-white transition";
 
     // Function to get status badge classes
     const getStatusClasses = (status) => {
@@ -72,13 +72,13 @@ export default function Orders({ data }) {
             case "processing":
             return "bg-orange-50 text-orange-500";
             case "shipping":
-            case "shipped":
-            return "bg-blue-50 text-blue-500";
+            case "shipping":
+            return "bg-blue-50 text-blue-700";
             case "delivered":
             return "bg-green-50 text-green-500";
             case "cancelled":
             case "canceled":
-            return "bg-red-50 text-red-500";
+            return "bg-red-50 text-red-400";
             default:
             return "bg-gray-50 text-gray-700";
         }
