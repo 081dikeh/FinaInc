@@ -33,7 +33,7 @@ export default function SideBar() {
 
 
   return (
-    <div className=" h-screen bg-white fixed top-0 left-0 h-screen w-64 overflow-y-auto z-20 shadow-lg">
+    <div className="h-screen bg-white w-64 overflow-y-auto overflow-x-hidden shadow-lg ">
         <aside className="w-64 p-6 flex flex-col justify-between h-full">
             <div className="mb-8 flex justify-between items-center">
                 <h2 className=" text-xl text-brand-400 font-semibold flex items-center gap-2"><img src={FinaLogo} alt="" />Fina Inc</h2>

@@ -19,7 +19,7 @@ export default function MyCard() {
             <AddCardBtn />
         </div>
 
-        <div className="">
+        <div className="w-full">
             <CardContainer />
         </div>       
     </section>

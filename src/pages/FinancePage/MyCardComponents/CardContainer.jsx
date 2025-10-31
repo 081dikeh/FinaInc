@@ -18,7 +18,7 @@ export default function CardContainer(){
     function scrollLeft(){
         if(scrollContainerRef.current){
             scrollContainerRef.current.scrollBy({
-                left: -500,
+                left: -350,
                 behavior: 'smooth'
             });
             setActiveCard(Math.max(0, activeCard - 1));
@@ -28,7 +28,7 @@ export default function CardContainer(){
     function scrollRight(){
         if(scrollContainerRef.current){
             scrollContainerRef.current.scrollBy({
-                left: 500,
+                left: 350,
                 behavior: 'smooth'
             });
             setActiveCard(Math.min(cards.length - 1, activeCard + 1));
@@ -37,11 +37,11 @@ export default function CardContainer(){
     
 
     return(
-        <div className=" mx-auto p-2">
-            <div className="relative">
+        <div className=" mx-auto p-2 w-full">
+            <div className="w-full">
                 <div 
                     ref={scrollContainerRef}
-                    className="flex gap-6 overflow-x-auto scrollbar-hide pb-6 cursor-pointer"
+                    className="flex gap-6 overflow-x-auto scrollbar-hide pb-6 cursor-pointer w-full"
                     style={{
                         scrollSnapType: 'x mandatory',
                         WebkitOverflowScrolling: 'touch'
@@ -93,7 +93,7 @@ export default function CardContainer(){
                         }}
                         className={`h-2 mr-1 rounded-full transition-all ${
                         index === activeCard 
-                            ? 'w-8 bg-purple-600' 
+                            ? 'w-8 bg-primary-light' 
                             : 'w-2 bg-gray-300'
                         }`}
                     />

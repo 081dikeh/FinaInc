@@ -6,10 +6,10 @@ export default function Header() {
   const [userDropdownOpen, setUserDropdownOpen] = useState(false);
 
   return (
-    <nav className="bg-white border-b border-gray-200 p-2 max-w-full w-full overflow-hidden shadow-sm">
+    <nav className="bg-white border-b border-gray-200 p-2 max-w-full w-full shadow-sm">
       <div className="flex items-center justify-between">
         {/* Left Section - Search */}
-        <div className="flex items-center flex-1 max-w-md">
+        <div className="flex items-center max-w-md">
           <div className="relative w-full">
             <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" size={20} />
             <input
