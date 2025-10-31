@@ -12,11 +12,11 @@ import MyCard from './pages/FinancePage/MyCard';
 function App() {
   return (
     <BrowserRouter>
-    <div className="flex min-h-screen bg-gray-100 font-geist">
+    <div className="flex bg-gray-100 font-geist min-h-screen overflow-x-hidden">
       <SideBar />
-      <div className="flex-1 flex flex-col">
+      <div className="flex-1 flex flex-col ml-64">
         <Header />
-        <main className="p-6 ml-64 max-w-[100%]">
+        <main className="p-6 w-full max-w-full">
             <Routes>
               <Route path='/' element={<DashBoardPage />} />
               <Route path='/finance/my-card' element={<MyCard />} />

@@ -4,7 +4,7 @@ import CardContainer from "./MyCardComponents/CardContainer";
 
 export default function MyCard() {
   return (
-    <section className="">
+    <section className="w-full max-w-7xl">
         <div className="flex justify-between items-center mb-6">
             <div>
             <h1 className="text-3xl font-bold text-gray-900 mb-2">My Card</h1>
@@ -21,9 +21,7 @@ export default function MyCard() {
 
         <div className="">
             <CardContainer />
-        </div>
-        
-        
+        </div>       
     </section>
   )
 };

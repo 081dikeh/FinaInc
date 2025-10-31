@@ -6,7 +6,7 @@ export default function Header() {
   const [userDropdownOpen, setUserDropdownOpen] = useState(false);
 
   return (
-    <nav className="bg-white border-b border-gray-200 p-2 ml-64">
+    <nav className="bg-white border-b border-gray-200 p-2 max-w-full w-full overflow-hidden shadow-sm">
       <div className="flex items-center justify-between">
         {/* Left Section - Search */}
         <div className="flex items-center flex-1 max-w-md">

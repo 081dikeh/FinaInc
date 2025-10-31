@@ -18,7 +18,7 @@ export default function CardContainer(){
     function scrollLeft(){
         if(scrollContainerRef.current){
             scrollContainerRef.current.scrollBy({
-                left: -350,
+                left: -500,
                 behavior: 'smooth'
             });
             setActiveCard(Math.max(0, activeCard - 1));
@@ -28,7 +28,7 @@ export default function CardContainer(){
     function scrollRight(){
         if(scrollContainerRef.current){
             scrollContainerRef.current.scrollBy({
-                left: 350,
+                left: 500,
                 behavior: 'smooth'
             });
             setActiveCard(Math.min(cards.length - 1, activeCard + 1));
@@ -37,23 +37,23 @@ export default function CardContainer(){
     
 
     return(
-        <div className="w-full max-w-7xl mx-auto p-2">
+        <div className=" mx-auto p-2">
             <div className="relative">
                 <div 
                     ref={scrollContainerRef}
-                    className="flex gap-6 overflow-x-auto scrollbar-hide pb-6"
+                    className="flex gap-6 overflow-x-auto scrollbar-hide pb-6 cursor-pointer"
                     style={{
                         scrollSnapType: 'x mandatory',
                         WebkitOverflowScrolling: 'touch'
                     }}
                 >
-                    {cards.map((c) => (
+                    {cards.map((card) => (
                         <Card
-                            key={c.id}
-                            bgColor={c.bgColor}
-                            balance={c.balance}
-                            cardNumber={c.cardNumber}
-                            expDate={c.expDate}
+                            key={card.id}
+                            bgColor={card.bgColor}
+                            balance={card.balance}
+                            cardNumber={card.cardNumber}
+                            expDate={card.expDate}
                         />
                     ))}
                 </div>
@@ -62,7 +62,7 @@ export default function CardContainer(){
                 <button 
                     onClick={scrollLeft}
                     disabled={activeCard === 0}
-                    className=" absolute top-1/2 left-0 transform -translate-y-1/2 "
+                    className=" "
                 >
                     <ChevronLeft/>
                 </button>
@@ -70,7 +70,7 @@ export default function CardContainer(){
                 <button 
                     onClick={scrollRight}
                     disabled={activeCard === cards.length - 1}
-                    className=" absolute top-1/2 right-0 transform -translate-y-1/2 "
+                    className=" "
                 >
                     <ChevronRight/>
                 </button>
@@ -91,7 +91,7 @@ export default function CardContainer(){
                             });
                         }
                         }}
-                        className={`h-2 rounded-full transition-all ${
+                        className={`h-2 mr-1 rounded-full transition-all ${
                         index === activeCard 
                             ? 'w-8 bg-purple-600' 
                             : 'w-2 bg-gray-300'
