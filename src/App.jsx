@@ -8,13 +8,22 @@ import Project from "./pages/Project";
 import Chat from "./pages/Chat";
 import Campaign from "./pages/Campaign";
 import MyCard from "./pages/FinancePage/MyCard";
+import { useState } from "react";
 
 function App() {
+    const [isClicked, setIsClicked] =  useState(false);
+    const sidebarWidth = isClicked ? 'w-20' : 'w-64';
+    const sidebarWidthPx = isClicked ? 80 : 264;
+
   return (
     <BrowserRouter>
       <div className="flex bg-gray-100 font-geist h-screen w-screen ">
-        <SideBar />
-        <div className="flex flex-col relative w-[calc(100%-256px)]">
+        <SideBar 
+          isClicked={isClicked} 
+          setIsClicked={setIsClicked} 
+          sidebarWidth={sidebarWidth} />
+        <div className={`flex flex-col relative transition-all duration-300 `}
+        style={{ width: `calc(100% - ${sidebarWidthPx}px)` }}>
           <Header />
           <main className="p-6 w-full max-w-full flex-1 overflow-y-auto ">
             <Routes>

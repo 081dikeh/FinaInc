@@ -5,8 +5,7 @@ import { useState } from "react";
 
 
 
-export default function SideBar() {
-  const [isClicked, setIsClicked] =  useState(false);
+export default function SideBar({ sidebarWidth, isClicked, setIsClicked }) {
   const [isFinanceOpen, setIsFinanceOpen] = useState(false);
   const [isEcommerceOpen, setIsEcommerceOpen] = useState(false);
 
@@ -30,10 +29,10 @@ export default function SideBar() {
     }`;
   };
 
-
+  
 
   return (
-    <div className="h-screen bg-white w-64 overflow-y-auto overflow-x-hidden shadow-lg ">
+    <div className={`h-screen bg-white ${sidebarWidth} overflow-y-auto overflow-x-hidden shadow-lg`} >
         <aside className="w-64 p-6 flex flex-col justify-between h-full">
             <div className="mb-8 flex justify-between items-center">
                 <h2 className=" text-xl text-brand-400 font-semibold flex items-center gap-2"><img src={FinaLogo} alt="" />Fina Inc</h2>
