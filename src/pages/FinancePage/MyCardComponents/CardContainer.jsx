@@ -59,21 +59,24 @@ export default function CardContainer(){
                 </div>
 
                 {/* navigation arrows */}
-                <button 
-                    onClick={scrollLeft}
-                    disabled={activeCard === 0}
-                    className=" "
-                >
-                    <ChevronLeft/>
-                </button>
+                <div className="absolute right-4">
+                    <button 
+                        onClick={scrollLeft}
+                        disabled={activeCard === 0}
+                        className=" bg-[#E5E0FC] text-primary-light rounded-lg p-1 mr-2 hover:bg-primary-light hover:text-white transition"
+                    >
+                        <ChevronLeft/>
+                    </button>
 
-                <button 
-                    onClick={scrollRight}
-                    disabled={activeCard === cards.length - 1}
-                    className=" "
-                >
-                    <ChevronRight/>
-                </button>
+                    <button 
+                        onClick={scrollRight}
+                        disabled={activeCard === cards.length - 1}
+                        className="bg-[#E5E0FC] text-primary-light rounded-lg p-1 mr-2 hover:bg-primary-light hover:text-white transition"
+                    >
+                        <ChevronRight/>
+                    </button>
+                </div>
+                
             </div>
 
 

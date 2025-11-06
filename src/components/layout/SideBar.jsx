@@ -5,48 +5,61 @@ import { useState } from "react";
 
 
 
+
+
+
 export default function SideBar({ sidebarWidth, isClicked, setIsClicked }) {
+
+
   const [isFinanceOpen, setIsFinanceOpen] = useState(false);
   const [isEcommerceOpen, setIsEcommerceOpen] = useState(false);
+
 
   const toggleFinance = () => {
     setIsFinanceOpen(!isFinanceOpen);
   };
 
+
   const toggleEcommerce = () => {
     setIsEcommerceOpen(!isEcommerceOpen);
   };
 
+
   const handleClick = () => {
     setIsClicked(!isClicked);
   };
-  
+ 
   const getLinkClass = ({ isActive }) => {
     return `px-3 py-3 transition-all duration-300 flex gap-2 font-[500] hover:bg-primary-light hover:text-white rounded-md ${
-      isActive 
-        ? 'bg-primary-light text-white p-2' 
+      isActive
+        ? 'bg-primary-light text-white p-2'
         : 'bg-white'
     }`;
   };
 
-  
+
+ 
+
 
   return (
     <div className={`h-screen bg-white ${sidebarWidth} overflow-y-auto overflow-x-hidden shadow-lg`} >
         <aside className="w-64 p-6 flex flex-col justify-between h-full">
             <div className="mb-8 flex justify-between items-center">
-                <h2 className=" text-xl text-brand-400 font-semibold flex items-center gap-2"><img src={FinaLogo} alt="" />Fina Inc</h2>
+                <h2 className=" text-xl text-brand-400 font-semibold flex items-center gap-2"><img src={FinaLogo} alt="" />{!isClicked ? 'Fina Inc' : 'ii'}</h2>
+
 
                 <span className="text-brand-100 cursor-pointer" onClick={handleClick}>
                   {isClicked ? <ChevronsRight /> : <ChevronsLeft />}
                 </span>
             </div>
 
+
             <nav className=" flex flex-col gap-4 text-base text-brand-300">
-                <NavLink className={getLinkClass} to="/"> 
+                <NavLink className={getLinkClass} to="/">
                   <LayoutGrid />
                   Dashboard
                 </NavLink>
+
 
                 <div>
                   <div
@@ -83,6 +96,7 @@ export default function SideBar({ sidebarWidth, isClicked, setIsClicked }) {
                     </div>
                   )}
                 </div>
+
 
                 <div>
                   <div
@@ -126,26 +140,31 @@ export default function SideBar({ sidebarWidth, isClicked, setIsClicked }) {
                   )}
                 </div>
 
+
                 <NavLink className={getLinkClass} to="/project">
                   <ClipboardCheck />
                   Project
                 </NavLink>
+
 
                 <NavLink className={getLinkClass} to="/campaign">
                   <Rocket />
                   Campaign
                 </NavLink>
 
+
                 <NavLink className={getLinkClass} to="/calendar">
                   <Calendar />
                   Calendar
                 </NavLink>
+
 
                 <NavLink className={getLinkClass} to="/chat">
                   <MessageSquareText />
                   Chat
                 </NavLink>
             </nav>
+
 
             <div className="mt-auto text-base text-brand-300 font-[500]">
                 <a href="" className="flex gap-2 px-3 py-3"><CircleQuestionMark />Support</a>
@@ -156,4 +175,5 @@ export default function SideBar({ sidebarWidth, isClicked, setIsClicked }) {
   );
 }
 
-/* className={`${isOpen ? 'bg-primary' : 'bg-white'}`} */
+
+
