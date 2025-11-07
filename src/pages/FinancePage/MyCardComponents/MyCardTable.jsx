@@ -65,18 +65,19 @@ export default function MyCardTable({ data }) {
     
 
     return (
-        <section>
-            <div>
+        <section className="mt-10">
+            <div className=" border-b-2">
                 <ul className="flex gap-2 text-brand-300 text-sm cursor-pointer font-semibold">
-                    <li>All Card</li>
-                    <li>Purple Card</li>
-                    <li>Black Card</li>
-                    <li>Blue Card</li>
-                    <li>Green Card</li>
+                    <li className="p-3">All Card</li>
+                    <li className="p-3">Purple Card</li>
+                    <li className="p-3">Black Card</li>
+                    <li className="p-3">Blue Card</li>
+                    <li className="p-3">Green Card</li>
                 </ul>
             </div>
 
-            <div className="mt-6 ">
+            <div className="mt-6 flex flex-col gap-6">
+
                 <div className="flex items-center gap-3">
                     <div className="flex-1 relative">
                         <Search size={20} className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 " />
@@ -110,6 +111,7 @@ export default function MyCardTable({ data }) {
 
                     </div>   
                 </div>
+
                 <div className="overflow-x-auto bg-white">
                     <table className="min-w-full divide-y divide-gray-200">
                         <thead className="bg-gray-50">
