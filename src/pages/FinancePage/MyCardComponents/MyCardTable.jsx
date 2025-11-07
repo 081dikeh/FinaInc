@@ -110,48 +110,48 @@ export default function MyCardTable({ data }) {
 
                     </div>   
                 </div>
-                <div className="overflow-x-auto">
+                <div className="overflow-x-auto bg-white">
                     <table className="min-w-full divide-y divide-gray-200">
                         <thead className="bg-gray-50">
                             <tr>
                                 <th 
-                                    className="px-6 py-3 text-left text-xs font-semibold text-gray-500 uppercase cursor-pointer hover:bg-gray-100"
+                                    className="px-6 py-3 text-left text-xs font-semibold text-gray-500 uppercase cursor-pointer hover:bg-gray-100 tracking-wider"
                                     onClick={() => handleSort('id')}
                                 >
                                     ID
                                 </th>
                                 <th 
-                                    className="px-6 py-3 text-left text-xs font-semibold text-gray-500 uppercase cursor-pointer hover:bg-gray-100"
+                                    className="px-6 py-3 text-left text-xs font-semibold text-gray-500 uppercase cursor-pointer hover:bg-gray-100 tracking-wider"
                                     onClick={() => handleSort('detail')}
                                 >
                                     DETAILS
                                 </th>
                                 <th 
-                                    className="px-6 py-3 text-left text-xs font-semibold text-gray-500 uppercase cursor-pointer hover:bg-gray-100"
+                                    className="px-6 py-3 text-left text-xs font-semibold text-gray-500 uppercase cursor-pointer hover:bg-gray-100 tracking-wider"
                                     onClick={() => handleSort('amount')}
                                 >
                                     AMOUNT
                                 </th>
                                 <th 
-                                    className="px-6 py-3 text-left text-xs font-semibold text-gray-500 uppercase cursor-pointer hover:bg-gray-100"
+                                    className="px-6 py-3 text-left text-xs font-semibold text-gray-500 uppercase cursor-pointer hover:bg-gray-100 tracking-wider"
                                     onClick={() => handleSort('type')}
                                 >
                                     TYPE
                                 </th>
                                 <th 
-                                    className="px-6 py-3 text-left text-xs font-semibold text-gray-500 uppercase cursor-pointer hover:bg-gray-100"
+                                    className="px-6 py-3 text-left text-xs font-semibold text-gray-500 uppercase cursor-pointer hover:bg-gray-100 tracking-wider"
                                     onClick={() => handleSort('date')}
                                 >
                                     DATE
                                 </th>
                                 <th 
-                                    className="px-6 py-3 text-left text-xs font-semibold text-gray-500 uppercase cursor-pointer hover:bg-gray-100"
+                                    className="px-6 py-3 text-left text-xs font-semibold text-gray-500 uppercase cursor-pointer hover:bg-gray-100 tracking-wider"
                                     onClick={() => handleSort('status')}
                                 >
                                     STATUS
                                 </th>
                                 <th 
-                                    className="px-6 py-3 text-left text-xs font-semibold text-gray-500 uppercase cursor-pointer hover:bg-gray-100"
+                                    className="px-6 py-3 text-left text-xs font-semibold text-gray-500 uppercase cursor-pointer hover:bg-gray-100 tracking-wider"
                                 >
                                     ACTION
                                 </th>
@@ -174,16 +174,16 @@ export default function MyCardTable({ data }) {
                                     <p className="text-sm font-medium text-gray-900">${(transaction.amount).toFixed(2)}</p>
                                 </td>
                                 <td className="px-6 py-4 whitespace-nowrap">
-                                    <p className={`text-sm rounded-2xl px-3 py-1 font-medium text-gray-900 `}>{transaction.type}</p>
+                                    <p className={`text-sm rounded-2xl font-medium text-gray-900 `}>{transaction.type}</p>
                                 </td>
                                 <td className="px-6 py-4 whitespace-nowrap">
-                                    <p className={`text-sm rounded-2xl px-3 py-1 font-medium text-gray-900 `}>{transaction.date}</p>
+                                    <p className={`text-sm rounded-2xl font-medium text-gray-900 `}>{transaction.date}</p>
                                 </td>
                                 <td className="px-6 py-4 whitespace-nowrap">
-                                    <p className={`text-sm rounded-2xl px-3 py-1 font-medium text-gray-900 `}>{transaction.status}</p>
+                                    <p className={`text-sm rounded-2xl font-medium text-gray-900 `}>{transaction.status}</p>
                                 </td>
                                 <td className="px-6 py-4 whitespace-nowrap">
-                                    <p className={`text-sm rounded-2xl px-3 py-1 font-medium text-gray-900 `}>action</p>
+                                    <p className={`text-sm rounded-2xl font-medium text-gray-900 `}>action</p>
                                 </td>
                             </tr>
                         ))}
