@@ -1,10 +1,11 @@
 import AddCardBtn from "./MyCardComponents/AddCardBtn";
 import CardContainer from "./MyCardComponents/CardContainer";
+import MyCardTable from "./MyCardComponents/MyCardTable";
 
 
 export default function MyCard() {
   return (
-    <section className="w-full max-w-7xl">
+    <section className="w-full max-w-7xl font-Geist">
         <div className="flex justify-between items-center mb-6">
             <div>
             <h1 className="text-3xl font-bold text-gray-900 mb-2">My Card</h1>
@@ -21,7 +22,11 @@ export default function MyCard() {
 
         <div className="w-full">
             <CardContainer />
-        </div>       
+        </div>  
+
+        <div>
+          <MyCardTable />
+        </div>     
     </section>
   )
 };
