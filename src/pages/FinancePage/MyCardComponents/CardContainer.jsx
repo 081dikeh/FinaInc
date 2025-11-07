@@ -38,7 +38,7 @@ export default function CardContainer(){
 
     return(
         <div className=" mx-auto p-2 w-full">
-            <div className="w-full">
+            <div className="w-full relative">
                 <div 
                     ref={scrollContainerRef}
                     className="flex gap-6 overflow-x-auto scrollbar-hide pb-6 cursor-pointer w-full"
@@ -59,7 +59,7 @@ export default function CardContainer(){
                 </div>
 
                 {/* navigation arrows */}
-                <div className="absolute right-4">
+                <div className="absolute right-0">
                     <button 
                         onClick={scrollLeft}
                         disabled={activeCard === 0}

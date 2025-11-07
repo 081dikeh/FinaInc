@@ -1,6 +1,7 @@
 import AddCardBtn from "./MyCardComponents/AddCardBtn";
 import CardContainer from "./MyCardComponents/CardContainer";
 import MyCardTable from "./MyCardComponents/MyCardTable";
+import { transactions as data } from "../../data/financemockData/transactionsMockData";
 
 
 export default function MyCard() {
@@ -25,7 +26,7 @@ export default function MyCard() {
         </div>  
 
         <div>
-          <MyCardTable />
+          <MyCardTable data={data} />
         </div>     
     </section>
   )
