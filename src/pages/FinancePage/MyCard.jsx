@@ -6,7 +6,7 @@ import { transactions as data } from "../../data/financemockData/transactionsMoc
 
 export default function MyCard() {
   return (
-    <section className="w-full max-w-7xl font-Geist">
+    <section className="w-full min-w-7xl font-Geist">
         <div className="flex justify-between items-center mb-6">
             <div>
             <h1 className="text-3xl font-bold text-gray-900 mb-2">My Card</h1>

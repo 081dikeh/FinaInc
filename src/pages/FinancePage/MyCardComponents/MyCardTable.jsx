@@ -30,18 +30,10 @@ export default function MyCardTable({ data }) {
         };
         const selectedType = cardMap[cardType];
 
-            console.log('Total Data:', data.length);
-            console.log('Sample item:', data[0]);
-            console.log('Current cardType state:', cardType);
-
         return item.cardType === selectedType;
         
     });
-      // Debug: Check the incoming data
-
-    console.log('Filtered data:', filterByCardType.length);
-
-    
+  
  
     // Handle sorting
     const handleSort = (field) => {
@@ -60,8 +52,7 @@ export default function MyCardTable({ data }) {
             return a[sortField] > b[sortField] ? 1 : -1;
         } else {
             return a[sortField] < b[sortField] ? 1 : -1;
-        }
-        
+        }        
     });
 
 
@@ -106,7 +97,6 @@ export default function MyCardTable({ data }) {
     };
 
     const handleCardTypeClick = (type) => {
-        console.log('Clicked card type:', type);
         setCardType(type);
         setCurrentPage(1);
     };
@@ -119,7 +109,11 @@ export default function MyCardTable({ data }) {
                     {cardTypebyColor.map((type) => (
                         <li 
                             key={type}
-                            className="p-3"
+                            className={`p-3 transition-colors ${
+                                cardType === type 
+                                    ? 'border-b-2 border-primary-light text-primary-light' 
+                                    : 'hover:text-primary-light hover:border-b-2'
+                            }`}
                             onClick={() => handleCardTypeClick(type)}
                             
                         >
