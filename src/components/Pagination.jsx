@@ -1,7 +1,7 @@
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 
-export default function Pagination({ itemsPerPage, sortedData, currentPage, getPageNumbers, totalPages }) {
+export default function Pagination({ itemsPerPage, sortedData, currentPage, getPageNumbers, totalPages, handlePageChange }) {
 
     const activeStyle = "px-3 py-1 bg-primary-light text-white rounded-lg font-semibold";
     const normalStyle = "px-3 py-1 bg-white text-brand-200 font-semibold rounded-lg hover:bg-primary-light hover:text-white transition";
@@ -22,7 +22,7 @@ export default function Pagination({ itemsPerPage, sortedData, currentPage, getP
                         <button
                             onClick={() => handlePageChange(currentPage - 1)}
                             disabled={currentPage === 1}
-                            className=" p-1 rounded-lg hover:bg-brand-600 transition bg-brand-800 "
+                            className=" p-1 rounded-lg hover:bg-primary-light transition bg-brand-800 "
                         >
                             <ChevronLeft className=" text-primary-light text-base hover:text-white transition" />
                         </button>
@@ -46,7 +46,7 @@ export default function Pagination({ itemsPerPage, sortedData, currentPage, getP
                         <button
                             onClick={() => handlePageChange(currentPage + 1)}
                             disabled={currentPage === totalPages}
-                            className=" p-1 rounded-lg hover:bg-brand-600 transition bg-brand-800 "
+                            className=" p-1 rounded-lg hover:bg-primary-light transition bg-brand-800 "
                         >
                             <ChevronRight className=" text-primary-light text-base hover:text-white transition" />
                         </button>

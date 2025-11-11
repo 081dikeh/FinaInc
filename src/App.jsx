@@ -13,11 +13,11 @@ import { useState } from "react";
 function App() {
     const [isClicked, setIsClicked] =  useState(false);
     const sidebarWidth = isClicked ? 'w-20' : 'w-64';
-    const sidebarWidthPx = isClicked ? 80 : 264;
+    const sidebarWidthPx = isClicked ? 80 : 255;
 
   return (
     <BrowserRouter>
-      <div className="flex bg-gray-100 font-geist h-screen w-screen ">
+      <div className="flex justify-between gap-0 bg-gray-100 font-geist h-screen w-screen ">
         <SideBar 
           isClicked={isClicked} 
           setIsClicked={setIsClicked} 

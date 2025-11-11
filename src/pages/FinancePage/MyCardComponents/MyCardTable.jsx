@@ -1,18 +1,48 @@
 import { Search } from "lucide-react"
 import { useState } from "react"
 import Pagination from "../../../components/Pagination";
+import { ArrowDown, ArrowUp, Share2 } from "lucide-react";
+
 
 export default function MyCardTable({ data }) {
+
     const [cashType, setCashType] = useState('All Types');
     const [timeFrame, setTimeFrame] = useState('Newest');
+
     // Sorting state
     const [sortField, setSortField] = useState(null);
     const [sortDirection, setSortDirection] = useState('asc');
+
     //pagination state
     const [currentPage, setCurrentPage] = useState(1);
-    const [itemsPerPage] = useState(5);  
-    
+    const [itemsPerPage] = useState(10);  
 
+    //sorting table according to card type
+    const [cardType, setCardType] = useState('All Cards');
+    const cardTypebyColor = ['All Cards', 'Purple Card', 'Black Card', 'Blue Card', 'Green Card'];
+    const filterByCardType = data.filter((item) => {
+        if (cardType === 'All Cards') return true;
+        const cardMap = {
+            'Purple Card': 'purple',
+            'Black Card': 'black',
+            'Blue Card': 'blue',
+            'Green Card': 'green',
+        };
+        const selectedType = cardMap[cardType];
+
+            console.log('Total Data:', data.length);
+            console.log('Sample item:', data[0]);
+            console.log('Current cardType state:', cardType);
+
+        return item.cardType === selectedType;
+        
+    });
+      // Debug: Check the incoming data
+
+    console.log('Filtered data:', filterByCardType.length);
+
+    
+ 
     // Handle sorting
     const handleSort = (field) => {
         setCurrentPage(1); // Reset to first page on sort
@@ -24,14 +54,16 @@ export default function MyCardTable({ data }) {
         }
     };
 
-    const sortedData = [...data].sort((a, b) => {
+    const sortedData = [...filterByCardType].sort((a, b) => {
         if (!sortField) return 0;
         if (sortDirection === 'asc') {
             return a[sortField] > b[sortField] ? 1 : -1;
         } else {
             return a[sortField] < b[sortField] ? 1 : -1;
         }
+        
     });
+
 
     // Pagination logic
     const totalPages = Math.ceil(sortedData.length / itemsPerPage);
@@ -62,17 +94,38 @@ export default function MyCardTable({ data }) {
         }
         return pages;
     };
+        const getStatusClasses = (transaction) => {
+        switch ((transaction || "").toLowerCase()) {
+            case "pending":
+            return "bg-orange-50 text-orange-500";
+            case "success":
+            return "bg-green-50 text-green-600";
+            default:
+            return "bg-gray-50 text-gray-700";
+        }
+    };
+
+    const handleCardTypeClick = (type) => {
+        console.log('Clicked card type:', type);
+        setCardType(type);
+        setCurrentPage(1);
+    };
     
 
     return (
         <section className="mt-10">
             <div className=" border-b-2">
                 <ul className="flex gap-2 text-brand-300 text-sm cursor-pointer font-semibold">
-                    <li className="p-3">All Card</li>
-                    <li className="p-3">Purple Card</li>
-                    <li className="p-3">Black Card</li>
-                    <li className="p-3">Blue Card</li>
-                    <li className="p-3">Green Card</li>
+                    {cardTypebyColor.map((type) => (
+                        <li 
+                            key={type}
+                            className="p-3"
+                            onClick={() => handleCardTypeClick(type)}
+                            
+                        >
+                            {type}
+                        </li>
+                    ))}
                 </ul>
             </div>
 
@@ -84,7 +137,7 @@ export default function MyCardTable({ data }) {
                         <input placeholder="Search transaction..." className=" pl-10 pr-4 py-2.5 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" />
                     </div>
 
-                    <div className="flex gap-2">
+                    <div className="flex gap-2 text-sm text-brand-400 font-medium">
 
                         <select name="" id=""                        
                             value={cashType}
@@ -98,8 +151,7 @@ export default function MyCardTable({ data }) {
                             <option value={'Transfer'}>Transfer</option>
                         </select>
 
-                        <select name="" id=""
-                        
+                        <select name="" id=""                       
                             value={timeFrame}
                             onChange={(e) => setTimeFrame(e.target.value)}
                             className="border rounded-lg p-2"
@@ -112,48 +164,48 @@ export default function MyCardTable({ data }) {
                     </div>   
                 </div>
 
-                <div className="overflow-x-auto bg-white">
+                <div className="overflow-x-auto bg-white rounded-lg shadow-sm">
                     <table className="min-w-full divide-y divide-gray-200">
                         <thead className="bg-gray-50">
                             <tr>
                                 <th 
-                                    className="px-6 py-3 text-left text-xs font-semibold text-gray-500 uppercase cursor-pointer hover:bg-gray-100 tracking-wider"
+                                    className="px-6 py-3 text-left text-sm font-semibold text-gray-500 uppercase cursor-pointer hover:bg-gray-100 tracking-wider"
                                     onClick={() => handleSort('id')}
                                 >
                                     ID
                                 </th>
                                 <th 
-                                    className="px-6 py-3 text-left text-xs font-semibold text-gray-500 uppercase cursor-pointer hover:bg-gray-100 tracking-wider"
+                                    className="px-6 py-3 text-left text-sm font-semibold text-gray-500 uppercase cursor-pointer hover:bg-gray-100 tracking-wider"
                                     onClick={() => handleSort('detail')}
                                 >
                                     DETAILS
                                 </th>
                                 <th 
-                                    className="px-6 py-3 text-left text-xs font-semibold text-gray-500 uppercase cursor-pointer hover:bg-gray-100 tracking-wider"
+                                    className="px-6 py-3 text-left text-sm font-semibold text-gray-500 uppercase cursor-pointer hover:bg-gray-100 tracking-wider"
                                     onClick={() => handleSort('amount')}
                                 >
                                     AMOUNT
                                 </th>
                                 <th 
-                                    className="px-6 py-3 text-left text-xs font-semibold text-gray-500 uppercase cursor-pointer hover:bg-gray-100 tracking-wider"
+                                    className="px-6 py-3 text-left text-sm font-semibold text-gray-500 uppercase cursor-pointer hover:bg-gray-100 tracking-wider"
                                     onClick={() => handleSort('type')}
                                 >
                                     TYPE
                                 </th>
                                 <th 
-                                    className="px-6 py-3 text-left text-xs font-semibold text-gray-500 uppercase cursor-pointer hover:bg-gray-100 tracking-wider"
+                                    className="px-6 py-3 text-left text-sm font-semibold text-gray-500 uppercase cursor-pointer hover:bg-gray-100 tracking-wider"
                                     onClick={() => handleSort('date')}
                                 >
                                     DATE
                                 </th>
                                 <th 
-                                    className="px-6 py-3 text-left text-xs font-semibold text-gray-500 uppercase cursor-pointer hover:bg-gray-100 tracking-wider"
+                                    className="px-6 py-3 text-left text-sm font-semibold text-gray-500 uppercase cursor-pointer hover:bg-gray-100 tracking-wider"
                                     onClick={() => handleSort('status')}
                                 >
                                     STATUS
                                 </th>
                                 <th 
-                                    className="px-6 py-3 text-left text-xs font-semibold text-gray-500 uppercase cursor-pointer hover:bg-gray-100 tracking-wider"
+                                    className="px-6 py-3 text-left text-sm font-semibold text-gray-500 uppercase cursor-pointer hover:bg-gray-100 tracking-wider"
                                 >
                                     ACTION
                                 </th>
@@ -163,29 +215,35 @@ export default function MyCardTable({ data }) {
                         <tbody className="divide-y divide-gray-200">
                         {currentData.map((transaction) => (
                             <tr key={transaction.id} className="border-b hover:bg-gray-50">
-                                <td className="px-6 py-4 whitespace-nowrap">
+                                <td className="px-6 py-4 whitespace-nowrap text-brand-500 text-sm font-medium">
                                     <p>{transaction.id}</p>
                                 </td>
                                 <td className="px-6 py-4 whitespace-nowrap">
                                     <div>
-                                        <p className="text-sm font-medium text-gray-900">{transaction.detail}</p>
-                                        <p className="text-xs text-gray-500">{transaction.company}</p>
+                                        <p className="text-brand-500 text-sm font-medium">{transaction.detail}</p>
+                                        <p className="text-xs text-brand-100 font-medium">{transaction.company}</p>
                                     </div>
                                 </td>
                                 <td className="px-6 py-4 whitespace-nowrap">
-                                    <p className="text-sm font-medium text-gray-900">${(transaction.amount).toFixed(2)}</p>
+                                    <p className={`text-sm font-medium ${((transaction.type||'').toLowerCase() === 'expense') ? 'text-red-600' : 'text-green-600'}`}>{((transaction.type||'').toLowerCase() === 'expense') ? '-' : '+'}
+                                        ${Number(transaction.amount).toFixed(2)}
+                                    </p>
                                 </td>
                                 <td className="px-6 py-4 whitespace-nowrap">
-                                    <p className={`text-sm rounded-2xl font-medium text-gray-900 `}>{transaction.type}</p>
+                                    <p className={`text-sm flex gap-2 text-brand-500 font-medium `}>{transaction.type === 'Expense' ? <ArrowUp size={19} color="red" /> : <ArrowDown size={19} color="green" />} {transaction.type}</p>
                                 </td>
                                 <td className="px-6 py-4 whitespace-nowrap">
-                                    <p className={`text-sm rounded-2xl font-medium text-gray-900 `}>{transaction.date}</p>
+                                    <p className={`text-brand-500 text-sm font-medium `}>{transaction.date}</p>
                                 </td>
                                 <td className="px-6 py-4 whitespace-nowrap">
-                                    <p className={`text-sm rounded-2xl font-medium text-gray-900 `}>{transaction.status}</p>
+                                    <p className={`text-sm rounded-2xl px-3 py-1 w-[fit-content] font-medium ${getStatusClasses(transaction.status)} `}>{transaction.status}</p>
                                 </td>
                                 <td className="px-6 py-4 whitespace-nowrap">
-                                    <p className={`text-sm rounded-2xl font-medium text-gray-900 `}>action</p>
+                                    <p className={`text-sm rounded-2xl font-medium   `}>
+                                        <button className="bg-blue-200 p-1 rounded">
+                                            <Share2 size={17} color="#2D99FE" />
+                                        </button>
+                                    </p>
                                 </td>
                             </tr>
                         ))}
@@ -197,6 +255,7 @@ export default function MyCardTable({ data }) {
                         currentPage={currentPage}
                         getPageNumbers={getPageNumbers}
                         totalPages={totalPages}
+                        handlePageChange={handlePageChange}
                     />
                 </div>                 
             </div>
