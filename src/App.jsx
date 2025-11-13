@@ -9,6 +9,7 @@ import Chat from "./pages/Chat";
 import Campaign from "./pages/Campaign";
 import MyCard from "./pages/FinancePage/MyCard";
 import { useState } from "react";
+import Savings from "./pages/FinancePage/Savings";
 
 function App() {
     const [isClicked, setIsClicked] =  useState(false);
@@ -29,6 +30,7 @@ function App() {
             <Routes>
               <Route path='/' element={<DashBoardPage />} /> 
               <Route path="/finance/my-card" element={<MyCard />} />
+              <Route path="/finance/savings" element={<Savings />} />
               <Route path='/calendar' element={<Calender />} />
               <Route path='/ecommerce' element={<Ecommerce />} />
               <Route path='/project' element={<Project />} />
