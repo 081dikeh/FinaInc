@@ -13,8 +13,8 @@ export default function Card({ balance, cardNumber, expDate, bgColor }) {
                 
                 {/* Mastercard Logo */}
                 <div className="flex gap-[-8px]">
-                <div className="w-8 h-8 rounded-full bg-red-500 opacity-90"></div>
-                <div className="w-8 h-8 rounded-full bg-orange-400 opacity-90 -ml-4"></div>
+                    <div className="w-8 h-8 rounded-full bg-red-500 opacity-90"></div>
+                    <div className="w-8 h-8 rounded-full bg-orange-400 opacity-90 -ml-4"></div>
                 </div>
             </div>
 

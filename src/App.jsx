@@ -10,6 +10,7 @@ import Campaign from "./pages/Campaign";
 import MyCard from "./pages/FinancePage/MyCard";
 import { useState } from "react";
 import Savings from "./pages/FinancePage/Savings";
+import InAndOut from "./pages/FinancePage/InAndOut";
 
 function App() {
     const [isClicked, setIsClicked] =  useState(false);
@@ -31,6 +32,7 @@ function App() {
               <Route path='/' element={<DashBoardPage />} /> 
               <Route path="/finance/my-card" element={<MyCard />} />
               <Route path="/finance/savings" element={<Savings />} />
+              <Route path="/finance/in-out" element={<InAndOut />} />
               <Route path='/calendar' element={<Calender />} />
               <Route path='/ecommerce' element={<Ecommerce />} />
               <Route path='/project' element={<Project />} />

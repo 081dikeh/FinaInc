@@ -5,7 +5,7 @@ export default function SavedItemsContainer() {
     const mySavings = savingsGoals
 
     return(
-        <div className=" grid gap-8 grid-cols-3">
+        <div className=" grid gap-8 lg:grid-cols-3 md:grid-cols-2 grid-cols-1 mt-16">
             {mySavings.map((item, index) => (
                 <SavedItem 
                     key={item.id} 
