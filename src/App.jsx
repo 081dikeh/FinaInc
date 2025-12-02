@@ -3,7 +3,6 @@ import SideBar from "./components/layout/SideBar";
 import Header from "./components/layout/Header";
 import DashBoardPage from "./pages/DashBoardPage";
 import Calender from "./pages/Calender";
-import Ecommerce from "./pages/Ecommerce";
 import Project from "./pages/Project";
 import Chat from "./pages/Chat";
 import Campaign from "./pages/Campaign";
@@ -11,6 +10,7 @@ import MyCard from "./pages/FinancePage/MyCard";
 import { useState } from "react";
 import Savings from "./pages/FinancePage/Savings";
 import InAndOut from "./pages/FinancePage/InAndOut";
+import Product from "./pages/ecommercePage/Product";
 
 function App() {
     const [isClicked, setIsClicked] =  useState(false);
@@ -30,11 +30,15 @@ function App() {
           <main className="p-6 w-full max-w-full flex-1 overflow-y-auto ">
             <Routes>
               <Route path='/' element={<DashBoardPage />} /> 
+              {/* finance pages */}
               <Route path="/finance/my-card" element={<MyCard />} />
               <Route path="/finance/savings" element={<Savings />} />
               <Route path="/finance/in-out" element={<InAndOut />} />
+
+              {/* ecommerce pages */}
+              <Route path='/ecommerce/product' element={<Product />} />
+
               <Route path='/calendar' element={<Calender />} />
-              <Route path='/ecommerce' element={<Ecommerce />} />
               <Route path='/project' element={<Project />} />
               <Route path='/chat' element={<Chat />} />
               <Route path='/campaign' element={<Campaign />} />  

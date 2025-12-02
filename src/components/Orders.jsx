@@ -5,6 +5,8 @@ import Pagination from "./Pagination";
 
 
 export default function Orders({ data }) {
+
+
     // Sorting state
     const [sortField, setSortField] = useState(null);
     const [sortDirection, setSortDirection] = useState('asc');
@@ -154,8 +156,18 @@ export default function Orders({ data }) {
                     currentPage={currentPage}
                     getPageNumbers={getPageNumbers}
                     totalPages={totalPages}
+                    handlePageChange={handlePageChange}
                 />
             </div>
         </div>
     );
 }
+
+
+/* 
+itemsPerPage={itemsPerPage}
+                    sortedData={sortedData}
+                    currentPage={currentPage}
+                    getPageNumbers={getPageNumbers}
+                    totalPages={totalPages}
+*/

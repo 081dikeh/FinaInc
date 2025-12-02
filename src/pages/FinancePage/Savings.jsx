@@ -3,6 +3,7 @@ import { Plus, Search  } from "lucide-react"
 import { useState } from "react"
 import DeleteBtn from "../../components/layout/DeleteBtn";
 import SavedItemsContainer from "./SavingsComponents/SavedItemsContainer";
+import Pagination from "../../components/Pagination";
 
 
 
@@ -53,6 +54,7 @@ export default function Savings() {
 
                 <div>
                     <SavedItemsContainer/>
+       
                 </div>
         </section>
     )
