@@ -11,6 +11,9 @@ import { useState } from "react";
 import Savings from "./pages/FinancePage/Savings";
 import InAndOut from "./pages/FinancePage/InAndOut";
 import Product from "./pages/ecommercePage/Product";
+import Categories from "./pages/ecommercePage/Categories";
+import Orders from "./pages/ecommercePage/Orders";
+import Customer from "./pages/ecommercePage/Customer";
 
 function App() {
     const [isClicked, setIsClicked] =  useState(false);
@@ -37,6 +40,10 @@ function App() {
 
               {/* ecommerce pages */}
               <Route path='/ecommerce/product' element={<Product />} />
+              <Route path='/ecommerce/category' element={<Categories />} />
+              <Route path='/ecommerce/orders' element={<Orders />} />
+              <Route path='/ecommerce/customer' element={<Customer />} />
+              
 
               <Route path='/calendar' element={<Calender />} />
               <Route path='/project' element={<Project />} />
