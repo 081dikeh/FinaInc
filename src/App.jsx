@@ -7,10 +7,13 @@ import Project from "./pages/Project";
 import Chat from "./pages/Chat";
 import Campaign from "./pages/Campaign";
 import MyCard from "./pages/FinancePage/MyCard";
+import CardDetails from "./pages/FinancePage/CardDetails";
 import { useState } from "react";
 import Savings from "./pages/FinancePage/Savings";
+import AddSavings from "./pages/FinancePage/AddSavings";
 import InAndOut from "./pages/FinancePage/InAndOut";
 import Product from "./pages/ecommercePage/Product";
+import AddProduct from "./pages/ecommercePage/AddProduct";
 import Categories from "./pages/ecommercePage/Categories";
 import Orders from "./pages/ecommercePage/Orders";
 import Customer from "./pages/ecommercePage/Customer";
@@ -35,11 +38,14 @@ function App() {
               <Route path='/' element={<DashBoardPage />} /> 
               {/* finance pages */}
               <Route path="/finance/my-card" element={<MyCard />} />
+              <Route path="/finance/my-card/:cardId" element={<CardDetails />} />
               <Route path="/finance/savings" element={<Savings />} />
+              <Route path="/finance/savings/add" element={<AddSavings />} />
               <Route path="/finance/in-out" element={<InAndOut />} />
 
               {/* ecommerce pages */}
               <Route path='/ecommerce/product' element={<Product />} />
+              <Route path='/ecommerce/product/add' element={<AddProduct />} />
               <Route path='/ecommerce/category' element={<Categories />} />
               <Route path='/ecommerce/orders' element={<Orders />} />
               <Route path='/ecommerce/customer' element={<Customer />} />

@@ -1,10 +1,20 @@
 import React, { useState } from 'react';
 import { Car, Calendar, Target, Check, Plus } from 'lucide-react';
 
-export default function SavedItem({ title, dueDate, goalAmount, monthlyContribution, currentAmount }) {
+export default function SavedItem({ title, dueDate, goalAmount, monthlyContribution, currentAmount, onTopUp }) {
   const [isActive, setIsActive] = useState(false);
+  const [isAdding, setIsAdding] = useState(false);
+  const [amount, setAmount] = useState("");
   const percentage = Math.round((currentAmount / goalAmount) * 100);
 
+  const handleTopUp = (e) => {
+    e.preventDefault();
+    const value = Number(amount);
+    if (!value) return;
+    onTopUp && onTopUp(value);
+    setAmount("");
+    setIsAdding(false);
+  };
 
   return (
 
@@ -76,11 +86,32 @@ export default function SavedItem({ title, dueDate, goalAmount, monthlyContribut
         </div>
 
         {/* Top Up Button */}
-        <button className="w-full bg-primary-light hover:bg-purple-600 text-white font-semibold py-3.5 rounded-2xl transition-colors flex items-center justify-center gap-2">
-
-          <Plus size={20} />
-          <span>Top Up</span>
-        </button>
+        {isAdding ? (
+          <form onSubmit={handleTopUp} className="flex gap-2">
+            <input
+              type="number"
+              autoFocus
+              value={amount}
+              onChange={(e) => setAmount(e.target.value)}
+              placeholder="Amount"
+              className="flex-1 border-2 border-gray-200 rounded-xl px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-primary-light"
+            />
+            <button
+              type="submit"
+              className="bg-primary-light text-white font-semibold px-4 rounded-xl hover:opacity-90 transition-colors"
+            >
+              Add
+            </button>
+          </form>
+        ) : (
+          <button
+            onClick={() => setIsAdding(true)}
+            className="w-full bg-primary-light hover:bg-purple-600 text-white font-semibold py-3.5 rounded-2xl transition-colors flex items-center justify-center gap-2"
+          >
+            <Plus size={20} />
+            <span>Top Up</span>
+          </button>
+        )}
       </div>
 
   );

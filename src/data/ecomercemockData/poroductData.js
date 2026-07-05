@@ -695,4 +695,27 @@ export const products = [
     status: "Published",
     dateCreated: "03 May 2022"
   },
-];  
+];
+
+export function addProduct(product) {
+  const newProduct = {
+    id: Date.now(),
+    productName: product.productName,
+    productImage:
+      product.productImage ||
+      "https://images.unsplash.com/photo-1505740420928-efe6ff27a629?w=100&h=100&fit=crop",
+    SKU: product.sku || `SKU${Date.now()}`,
+    category: product.category || "Uncategorized",
+    price: Number(product.price) || 0,
+    stock: Number(product.stock) || 0,
+    rating: 0,
+    status: product.status || "Draft",
+    dateCreated: new Date().toLocaleDateString("en-GB", {
+      day: "2-digit",
+      month: "short",
+      year: "numeric",
+    }),
+  };
+  products.unshift(newProduct);
+  return newProduct;
+}  

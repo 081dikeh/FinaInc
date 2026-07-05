@@ -51,3 +51,18 @@ export const savingsGoals = [
   { id: 50, title: "Smart Home Automation", currentAmount: 3450.00, goalAmount: 9000.00, monthlyContribution: 310.00, percentage: 38, dueDate: "20 August 2025" }
 ];
 
+export function addSavingsGoal(goal) {
+  const newGoal = {
+    id: Date.now(),
+    title: goal.title,
+    currentAmount: 0,
+    goalAmount: Number(goal.goal) || 0,
+    monthlyContribution: 0,
+    percentage: 0,
+    dueDate: goal.dueDate || "No due date",
+  };
+  savingsGoals.unshift(newGoal);
+  return newGoal;
+}
+
+

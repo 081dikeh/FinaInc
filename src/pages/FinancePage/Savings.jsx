@@ -1,6 +1,7 @@
 import PageTitle from "../../components/layout/PageTitle"
 import { Plus, Search  } from "lucide-react"
 import { useState } from "react"
+import { useNavigate } from "react-router-dom"
 import DeleteBtn from "../../components/layout/DeleteBtn";
 import SavedItemsContainer from "./SavingsComponents/SavedItemsContainer";
 import Pagination from "../../components/Pagination";
@@ -8,6 +9,7 @@ import Pagination from "../../components/Pagination";
 
 
 export default function Savings() {
+    const navigate = useNavigate();
     const [cashType, setCashType] = useState('All Types');
     const [timeFrame, setTimeFrame] = useState('Newest');
     return (
@@ -15,7 +17,10 @@ export default function Savings() {
             <div className="flex justify-between items-end mb-6">
                 <PageTitle title="Savings" navigationRoute="Savings" />
 
-                <button className="flex items-center gap-2 bg-primary-light text-white px-6 py-3 rounded-xl font-semibold transition-colors shadow-lg"><Plus /> Add new</button>
+                <button
+                    onClick={() => navigate("/finance/savings/add")}
+                    className="flex items-center gap-2 bg-primary-light text-white px-6 py-3 rounded-xl font-semibold transition-colors shadow-lg"
+                ><Plus /> Add new</button>
             </div>
             <div className="flex items-center gap-3">
                     <div className="flex-1 relative">

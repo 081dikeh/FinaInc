@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import PageTitle from "../../components/layout/PageTitle";
 import { Plus, ChevronDown, Search, Pencil, Trash2 } from "lucide-react";
 import StatCard from "../../components/layout/StatCard";
@@ -11,13 +12,18 @@ import iconBadge2 from "../../assets/ecommercepage-assets/Icon Badge2.png";
 import iconBadge3 from "../../assets/ecommercepage-assets/Icon Badge3.png";
 import iconBadge4 from "../../assets/ecommercepage-assets/Icon Badge4.png";
 
-export const AddProductBtn = () => (
-  // function to add product
-  <button className="flex items-center gap-2 bg-primary-light text-white px-6 py-3 rounded-xl font-semibold transition-colors shadow-lg">
-    <Plus />
-    Add Product
-  </button>
-);
+export const AddProductBtn = () => {
+  const navigate = useNavigate();
+  return (
+    <button
+      onClick={() => navigate("/ecommerce/product/add")}
+      className="flex items-center gap-2 bg-primary-light text-white px-6 py-3 rounded-xl font-semibold transition-colors shadow-lg"
+    >
+      <Plus />
+      Add Product
+    </button>
+  );
+};
 
 const FilterBtn = ({ title }) => (
   <button className="text-brand-200">{title}</button>

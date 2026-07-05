@@ -2,16 +2,7 @@ import Card from "./Card";
 import { useState, useRef } from "react";
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
-
-const cards = [
-  { id: 1, bgColor: "bg-[#7F63F1]", balance: "11,240.00", cardNumber: "9090", expDate: "07/25" },
-  { id: 2, bgColor: "bg-[#333843]", balance: "10,540.00", cardNumber: "9054", expDate: "02/25" },
-  { id: 3, bgColor: "bg-[#2D99FE]", balance: "15,320.00", cardNumber: "9080", expDate: "05/25" },
-  { id: 4, bgColor: "bg-[#14CB74]", balance: "30,200.00", cardNumber: "9070", expDate: "08/25" },
-];
-
-
-export default function CardContainer(){
+export default function CardContainer({ cards, onCardClick }){
     const scrollContainerRef = useRef(null);
     const [activeCard, setActiveCard] = useState(0);
 
@@ -41,7 +32,7 @@ export default function CardContainer(){
             <div className="w-full relative">
                 <div 
                     ref={scrollContainerRef}
-                    className="flex gap-6 overflow-x-auto scrollbar-hide pb-6 cursor-pointer w-full"
+                    className="flex gap-6 overflow-x-auto scrollbar-hide pb-6 w-full"
                     style={{
                         scrollSnapType: 'x mandatory',
                         WebkitOverflowScrolling: 'touch'
@@ -54,6 +45,7 @@ export default function CardContainer(){
                             balance={card.balance}
                             cardNumber={card.cardNumber}
                             expDate={card.expDate}
+                            onClick={() => onCardClick && onCardClick(card)}
                         />
                     ))}
                 </div>

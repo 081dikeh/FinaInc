@@ -1,9 +1,11 @@
 
 
-export default function Card({ balance, cardNumber, expDate, bgColor }) {
+export default function Card({ balance, cardNumber, expDate, bgColor, onClick }) {
     return (
 
-        <div className={` rounded-2xl p-4 shadow-xl text-white font-geist ${bgColor} h-48 flex-shrink-0 w-80`} >
+        <div
+            onClick={onClick}
+            className={` rounded-2xl p-4 shadow-xl text-white font-geist ${bgColor} h-48 flex-shrink-0 w-80 ${onClick ? "cursor-pointer hover:opacity-95 transition-opacity" : ""}`} >
         {/* Header Section */}
             <div className="flex justify-between mb-6 ">
                 <div>
