@@ -1,11 +1,12 @@
-import { useState } from "react";
-import { Plus, ChevronDown, Search, Trash2 } from "lucide-react";
+import { useState, useMemo } from "react";
+import { Plus, ChevronDown, Search, Trash2, Eye } from "lucide-react";
 import PageTitle from "../components/layout/PageTitle";
 import StatCard from "../components/layout/StatCard";
 import DeleteBtn from "../components/layout/DeleteBtn";
 import Pagination from "../components/Pagination";
 import ConfirmDeleteModal from "../components/ConfirmDeleteModal";
 import Modal from "../components/Modal";
+import CampaignDetailsModal from "./CampaignComponents/CampaignDetailsModal";
 import { campaigns as initialCampaigns, campaignStats } from "../data/campaignMockData";
 import iconBadge1 from "../assets/dashboard-assets/icon-badge1.png";
 import iconBadge2 from "../assets/dashboard-assets/icon-badge2.png";
@@ -102,16 +103,35 @@ export default function Campaign() {
   const [campaigns, setCampaigns] = useState(initialCampaigns);
   const [search, setSearch] = useState("");
   const [statusFilter, setStatusFilter] = useState("All Status");
+  const [sortBy, setSortBy] = useState("Newest");
+  const [isSortOpen, setIsSortOpen] = useState(false);
   const [isAddOpen, setIsAddOpen] = useState(false);
   const [deleteTarget, setDeleteTarget] = useState(null);
+  const [selectedCampaign, setSelectedCampaign] = useState(null);
+  const [isDetailsOpen, setIsDetailsOpen] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage] = useState(6);
 
-  const filtered = campaigns.filter((c) => {
-    const matchesSearch = c.name.toLowerCase().includes(search.toLowerCase());
-    const matchesStatus = statusFilter === "All Status" || c.status === statusFilter;
-    return matchesSearch && matchesStatus;
-  });
+  const sortOptions = ["Newest", "Oldest", "Highest Budget", "Highest Reach"];
+
+  const filtered = useMemo(() => {
+    let result = campaigns.filter((c) => {
+      const matchesSearch = c.name.toLowerCase().includes(search.toLowerCase());
+      const matchesStatus = statusFilter === "All Status" || c.status === statusFilter;
+      return matchesSearch && matchesStatus;
+    });
+
+    if (sortBy === "Newest") {
+      result = [...result].sort((a, b) => b.id - a.id);
+    } else if (sortBy === "Oldest") {
+      result = [...result].sort((a, b) => a.id - b.id);
+    } else if (sortBy === "Highest Budget") {
+      result = [...result].sort((a, b) => b.budget - a.budget);
+    } else if (sortBy === "Highest Reach") {
+      result = [...result].sort((a, b) => b.reach - a.reach);
+    }
+    return result;
+  }, [campaigns, search, statusFilter, sortBy]);
 
   const totalPages = Math.max(1, Math.ceil(filtered.length / itemsPerPage));
   const startIndex = (currentPage - 1) * itemsPerPage;
@@ -179,9 +199,32 @@ export default function Campaign() {
           />
         </div>
         <div className="flex gap-2">
-          <button className="text-sm text-brand-400 p-1.5 border-2 border-[#E0E2E7] flex gap-1 items-center rounded-lg font-[500] bg-white">
-            Newest <ChevronDown color="#858D9D" size={20} />
-          </button>
+          <div className="relative">
+            <button
+              onClick={() => setIsSortOpen((o) => !o)}
+              className="text-sm text-brand-400 p-1.5 border-2 border-[#E0E2E7] flex gap-1 items-center rounded-lg font-[500] bg-white"
+            >
+              {sortBy} <ChevronDown color="#858D9D" size={20} />
+            </button>
+            {isSortOpen && (
+              <div className="absolute right-0 mt-2 w-44 bg-white rounded-xl shadow-lg border border-gray-100 py-1.5 z-30">
+                {sortOptions.map((opt) => (
+                  <button
+                    key={opt}
+                    onClick={() => {
+                      setSortBy(opt);
+                      setIsSortOpen(false);
+                    }}
+                    className={`w-full text-left px-4 py-2 text-sm hover:bg-gray-50 transition-colors ${
+                      sortBy === opt ? "text-primary-light font-semibold" : "text-brand-400"
+                    }`}
+                  >
+                    {opt}
+                  </button>
+                ))}
+              </div>
+            )}
+          </div>
           <DeleteBtn />
         </div>
       </div>
@@ -211,7 +254,17 @@ export default function Campaign() {
                     {c.status}
                   </span>
                 </td>
-                <td className="px-6 py-4 whitespace-nowrap">
+                <td className="px-6 py-4 whitespace-nowrap flex gap-2">
+                  <button
+                    onClick={() => {
+                      setSelectedCampaign(c);
+                      setIsDetailsOpen(true);
+                    }}
+                    className="p-1 bg-[#D5EBFF] rounded"
+                    title="View details"
+                  >
+                    <Eye size={16} color="#2D99FE" />
+                  </button>
                   <button
                     onClick={() => setDeleteTarget(c)}
                     className="p-1 bg-[#FCE0E0] rounded"
@@ -241,6 +294,11 @@ export default function Campaign() {
       </div>
 
       <AddCampaignModal isOpen={isAddOpen} onClose={() => setIsAddOpen(false)} onAdd={handleAdd} />
+      <CampaignDetailsModal
+        isOpen={isDetailsOpen}
+        onClose={() => setIsDetailsOpen(false)}
+        campaign={selectedCampaign}
+      />
       <ConfirmDeleteModal
         isOpen={!!deleteTarget}
         onClose={() => setDeleteTarget(null)}

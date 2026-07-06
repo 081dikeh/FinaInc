@@ -68,7 +68,7 @@ export default function TopProducts({ data }) {
         <div className="bg-white rounded-lg shadow overflow-hidden col-span-5">
             <div className="p-6 border-b border-gray-200 flex items-center justify-between">
                 <h3 className="text-xl text-brand-500 font-semibold">Top Products</h3>
-                <ViewAll />
+                <ViewAll to="/ecommerce/product" />
             </div>
 
             <div className="overflow-x-auto">

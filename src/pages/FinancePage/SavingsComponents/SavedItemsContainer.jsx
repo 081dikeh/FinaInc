@@ -1,30 +1,9 @@
-import { useState } from "react";
 import SavedItem from "./SavedItem";
-import { savingsGoals } from '../../../data/financemockData/savingsData'
 
-export default function SavedItemsContainer() {
-    const [mySavings, setMySavings] = useState(savingsGoals);
-
-    const handleTopUp = (id, amount) => {
-        setMySavings((prev) =>
-            prev.map((item) =>
-                item.id === id
-                    ? {
-                          ...item,
-                          currentAmount: item.currentAmount + amount,
-                          percentage: Math.min(
-                              100,
-                              Math.round(((item.currentAmount + amount) / item.goalAmount) * 100)
-                          ),
-                      }
-                    : item
-            )
-        );
-    };
-
+export default function SavedItemsContainer({ items, onTopUp }) {
     return(
-        <div className=" grid gap-8 lg:grid-cols-3 md:grid-cols-2 grid-cols-1 mt-16">
-            {mySavings.map((item, index) => (
+        <div className=" grid gap-8 lg:grid-cols-3 md:grid-cols-2 grid-cols-1 mt-8">
+            {items.map((item) => (
                 <SavedItem 
                     key={item.id} 
                     title={item.title}
@@ -33,9 +12,14 @@ export default function SavedItemsContainer() {
                     goalAmount={item.goalAmount}
                     monthlyContribution={item.monthlyContribution}
                     currentAmount={item.currentAmount}
-                    onTopUp={(amount) => handleTopUp(item.id, amount)}
+                    onTopUp={(amount) => onTopUp(item.id, amount)}
                 />
             ))}
+            {items.length === 0 && (
+                <p className="col-span-full text-center text-brand-100 text-sm py-12">
+                    No savings goals match your search.
+                </p>
+            )}
         </div>
     )
 } 

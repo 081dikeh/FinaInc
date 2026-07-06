@@ -72,7 +72,7 @@ export default function Orders({ data }) {
             case "processing":
             return "bg-orange-50 text-orange-500";
             case "shipping":
-            case "shipping":
+            case "shipped":
             return "bg-blue-50 text-blue-700";
             case "delivered":
             return "bg-green-50 text-green-500";
@@ -89,7 +89,7 @@ export default function Orders({ data }) {
         <div className="bg-white rounded-lg shadow overflow-hidden col-span-5">
             <div className="p-6 border-b border-gray-200 flex items-center justify-between">
                 <h3 className="text-xl text-brand-500 font-semibold">Recent Orders</h3>
-                <ViewAll />
+                <ViewAll to="/ecommerce/orders" />
             </div>
 
             <div className="overflow-x-auto">

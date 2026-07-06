@@ -42,7 +42,7 @@ const CustomerGrowthDashboard = () => {
       {/* Header */}
       <div className="flex justify-between items-center mb-6">
         <h2 className="text-xl text-brand-500 font-semibold">Customer Growth</h2>
-        <ViewAll />
+        <ViewAll to="/ecommerce/customer" />
       </div>
 
       {/* Map Container */}

@@ -8,7 +8,7 @@ return (
       <div className="mb-4">
         <div className="flex justify-between items-center mb-2">
           <h2 className="text-xl text-brand-500 font-semibold">Customer List</h2>
-          <ViewAll />
+          <ViewAll to="/ecommerce/customer" />
         </div>
         <p className="text-sm text-gray-500">+12 New Customer This Day</p>
       </div>

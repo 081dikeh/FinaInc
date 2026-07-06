@@ -1,12 +1,17 @@
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import PageTitle from "../../components/layout/PageTitle";
+import StatCard from "../../components/layout/StatCard";
 import ConfirmDeleteModal from "../../components/ConfirmDeleteModal";
 import Modal from "../../components/Modal";
-import { FilterDropdownBtn } from "./Product";
+import Pagination from "../../components/Pagination";
 import { Categories as categoriesData } from "../../data/ecomercemockData/categoriesData";
 import CategoryDetailsModal from "./CategoriesComponents/CategoryDetailsModal";
+import iconBadge1 from "../../assets/ecommercepage-assets/Icon Badge1.png";
+import iconBadge2 from "../../assets/ecommercepage-assets/Icon Badge2.png";
+import iconBadge3 from "../../assets/ecommercepage-assets/Icon Badge3.png";
+import iconBadge4 from "../../assets/ecommercepage-assets/Icon Badge4.png";
 
-import { Check } from "lucide-react";
+import { Check, ChevronDown } from "lucide-react";
 
 const inputClass =
   "w-full px-4 py-2.5 border-2 border-[#E0E2E7] rounded-xl text-sm text-brand-500 focus:outline-none focus:ring-2 focus:ring-primary-light";
@@ -121,18 +126,139 @@ function ProductCard({ category, isSelected, onToggle, onView }) {
   );
 }
 
+function StockFilterDropdown({ value, setValue }) {
+  const [open, setOpen] = useState(false);
+  const options = ["All Stock", "In Stock", "Out of Stock"];
+  return (
+    <div className="relative">
+      <button
+        onClick={() => setOpen((o) => !o)}
+        className="text-sm text-brand-400 p-1.5 px-3 border-2 border-[#E0E2E7] flex gap-1 items-center rounded-lg font-[500] bg-white"
+      >
+        {value} <ChevronDown color="#858D9D" size={20} />
+      </button>
+      {open && (
+        <div className="absolute right-0 mt-2 w-40 bg-white rounded-xl shadow-lg border border-gray-100 py-1.5 z-30">
+          {options.map((opt) => (
+            <button
+              key={opt}
+              onClick={() => {
+                setValue(opt);
+                setOpen(false);
+              }}
+              className={`w-full text-left px-4 py-2 text-sm hover:bg-gray-50 transition-colors ${
+                value === opt ? "text-primary-light font-semibold" : "text-brand-400"
+              }`}
+            >
+              {opt}
+            </button>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
+
+function SortDropdown({ value, setValue }) {
+  const [open, setOpen] = useState(false);
+  const options = ["Newest", "Oldest", "Most Products", "Most Stock"];
+  return (
+    <div className="relative">
+      <button
+        onClick={() => setOpen((o) => !o)}
+        className="text-sm text-brand-400 p-1.5 px-3 border-2 border-[#E0E2E7] flex gap-1 items-center rounded-lg font-[500] bg-white"
+      >
+        {value} <ChevronDown color="#858D9D" size={20} />
+      </button>
+      {open && (
+        <div className="absolute right-0 mt-2 w-44 bg-white rounded-xl shadow-lg border border-gray-100 py-1.5 z-30">
+          {options.map((opt) => (
+            <button
+              key={opt}
+              onClick={() => {
+                setValue(opt);
+                setOpen(false);
+              }}
+              className={`w-full text-left px-4 py-2 text-sm hover:bg-gray-50 transition-colors ${
+                value === opt ? "text-primary-light font-semibold" : "text-brand-400"
+              }`}
+            >
+              {opt}
+            </button>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
+
 const Categories = () => {
   const [categories, setCategories] = useState(categoriesData);
   const [selectedIds, setSelectedIds] = useState([]);
   const [search, setSearch] = useState("");
+  const [stockFilter, setStockFilter] = useState("All Stock");
+  const [sortBy, setSortBy] = useState("Newest");
   const [isAddOpen, setIsAddOpen] = useState(false);
   const [detailsCategory, setDetailsCategory] = useState(null);
   const [isDetailsOpen, setIsDetailsOpen] = useState(false);
   const [deleteTarget, setDeleteTarget] = useState(null);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [itemsPerPage] = useState(8);
 
-  const filtered = categories.filter((c) =>
-    c.productName.toLowerCase().includes(search.toLowerCase())
-  );
+  const stats = useMemo(() => {
+    const totalCategories = categories.length;
+    const totalProducts = categories.reduce((sum, c) => sum + c.productAmount, 0);
+    const totalStock = categories.reduce((sum, c) => sum + c.stockAmount, 0);
+    const outOfStock = categories.filter((c) => c.stockAmount === 0).length;
+    return { totalCategories, totalProducts, totalStock, outOfStock };
+  }, [categories]);
+
+  const statCards = [
+    { title: "Total Categories", value: stats.totalCategories, isPositive: true, change: "+4%", titleIcon: iconBadge1 },
+    { title: "Total Products", value: stats.totalProducts.toLocaleString(), isPositive: true, change: "+6%", titleIcon: iconBadge2 },
+    { title: "Total Stock", value: stats.totalStock.toLocaleString(), isPositive: true, change: "+2%", titleIcon: iconBadge3 },
+    { title: "Out of Stock", value: stats.outOfStock, isPositive: false, change: "-1%", titleIcon: iconBadge4 },
+  ];
+
+  const filtered = useMemo(() => {
+    let result = categories.filter((c) => {
+      const matchesSearch = c.productName.toLowerCase().includes(search.toLowerCase());
+      const matchesStock =
+        stockFilter === "All Stock" ||
+        (stockFilter === "In Stock" && c.stockAmount > 0) ||
+        (stockFilter === "Out of Stock" && c.stockAmount === 0);
+      return matchesSearch && matchesStock;
+    });
+
+    if (sortBy === "Newest") {
+      result = [...result].sort((a, b) => b.id - a.id);
+    } else if (sortBy === "Oldest") {
+      result = [...result].sort((a, b) => a.id - b.id);
+    } else if (sortBy === "Most Products") {
+      result = [...result].sort((a, b) => b.productAmount - a.productAmount);
+    } else if (sortBy === "Most Stock") {
+      result = [...result].sort((a, b) => b.stockAmount - a.stockAmount);
+    }
+    return result;
+  }, [categories, search, stockFilter, sortBy]);
+
+  const totalPages = Math.max(1, Math.ceil(filtered.length / itemsPerPage));
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const currentData = filtered.slice(startIndex, startIndex + itemsPerPage);
+
+  const getPageNumbers = () => {
+    const pages = [];
+    if (totalPages <= 7) {
+      for (let i = 1; i <= totalPages; i++) pages.push(i);
+    } else if (currentPage <= 3) {
+      pages.push(1, 2, 3, "...", totalPages);
+    } else if (currentPage >= totalPages - 2) {
+      pages.push(1, "...", totalPages - 2, totalPages - 1, totalPages);
+    } else {
+      pages.push(1, "...", currentPage, "...", totalPages);
+    }
+    return pages;
+  };
 
   const toggleSelect = (id) =>
     setSelectedIds((prev) =>
@@ -165,19 +291,34 @@ const Categories = () => {
         </button>
       </div>
 
+      <div className="grid grid-cols-4 gap-4 mb-6">
+        {statCards.map((stat, i) => (
+          <StatCard key={i} {...stat} />
+        ))}
+      </div>
+
       <div className="flex justify-between items-center mt-6 gap-4">
         <div className="flex-1 relative">
           <input
             placeholder="Search..."
             value={search}
-            onChange={(e) => setSearch(e.target.value)}
+            onChange={(e) => {
+              setSearch(e.target.value);
+              setCurrentPage(1);
+            }}
             className="pl-4 pr-4 py-2.5 border rounded-lg w-full focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
         </div>
 
         <div className="flex gap-4">
-          <FilterDropdownBtn title="All Stock" />
-          <FilterDropdownBtn title="Newest" />
+          <StockFilterDropdown
+            value={stockFilter}
+            setValue={(v) => {
+              setStockFilter(v);
+              setCurrentPage(1);
+            }}
+          />
+          <SortDropdown value={sortBy} setValue={setSortBy} />
           <button
             onClick={handleBulkDelete}
             disabled={selectedIds.length === 0}
@@ -189,7 +330,7 @@ const Categories = () => {
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-6">
-        {filtered.map((category) => (
+        {currentData.map((category) => (
           <ProductCard
             key={category.id}
             category={category}
@@ -201,12 +342,25 @@ const Categories = () => {
             }}
           />
         ))}
-        {filtered.length === 0 && (
+        {currentData.length === 0 && (
           <p className="col-span-full text-center text-brand-100 text-sm py-8">
             No categories found.
           </p>
         )}
       </div>
+
+      {filtered.length > 0 && (
+        <div className="bg-white rounded-lg shadow-sm mt-8">
+          <Pagination
+            itemsPerPage={itemsPerPage}
+            sortedData={filtered}
+            currentPage={currentPage}
+            getPageNumbers={getPageNumbers}
+            totalPages={totalPages}
+            handlePageChange={setCurrentPage}
+          />
+        </div>
+      )}
 
       <AddCategoryModal isOpen={isAddOpen} onClose={() => setIsAddOpen(false)} onAdd={handleAdd} />
       <CategoryDetailsModal

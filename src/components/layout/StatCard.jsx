@@ -1,6 +1,6 @@
 import { ArrowDownRight, ArrowUpRight } from "lucide-react"
 
-export default function StatCard({ title, titleIcon, value, isPositive, change, incremental }) {
+export default function StatCard({ title, titleIcon, value, isPositive, change, incremental = "+$150 today" }) {
   return (
     <div className="bg-white p-4 rounded-lg shadow-md flex flex-col gap-1">
       <div className="flex justify-between">
@@ -14,7 +14,7 @@ export default function StatCard({ title, titleIcon, value, isPositive, change, 
           {change} 
           {isPositive ? <ArrowUpRight size={14} className="inline-block ml-1"/> : <ArrowDownRight size={14} className="inline-block ml-1"/>}
         </p>
-        <span className="text-sm mt-2 text-brand-200 font-[500]">{incremental = '+$150 today'}</span>
+        <span className="text-sm mt-2 text-brand-200 font-[500]">{incremental}</span>
         </div>
 
     </div>
