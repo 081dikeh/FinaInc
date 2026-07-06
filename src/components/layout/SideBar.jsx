@@ -246,22 +246,22 @@ export default function SideBar({ sidebarWidth, isClicked, setIsClicked }) {
             </nav>
 
             <div className="mt-auto text-base text-brand-300 font-[500]">
-                <a 
-                  href="#" 
-                  className={`flex gap-2 px-3 py-3 hover:bg-gray-100 rounded-lg transition-colors ${isClicked ? 'justify-center' : ''}`}
+                <NavLink 
+                  to="/support"
+                  className={getLinkClass}
                   title={isClicked ? "Support" : ""}
                 >
                   <CircleQuestionMark />
                   {!isClicked && <span>Support</span>}
-                </a>
-                <a 
-                  href="#" 
-                  className={`flex gap-2 px-3 py-3 hover:bg-gray-100 rounded-lg transition-colors ${isClicked ? 'justify-center' : ''}`}
+                </NavLink>
+                <NavLink 
+                  to="/contact-us"
+                  className={getLinkClass}
                   title={isClicked ? "Contact Us" : ""}
                 >
                   <Phone />
                   {!isClicked && <span>Contact Us</span>}
-                </a>
+                </NavLink>
             </div>
         </aside>
     </div>
